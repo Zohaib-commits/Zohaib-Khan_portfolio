@@ -1,0 +1,23 @@
+# System Files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDEs and Editors
+.vscode/
+.idea/
+.vs/
+*.swp
+*.swo
+
+# Temporary Files & Diagnostics
+Screenshot*.png
+to_fix.png
+profile.jpg
+crop.py
+
+# Build/Cache (If you ever add a bundler like Vue/React later)
+node_modules/
+dist/
+build/
+.env
