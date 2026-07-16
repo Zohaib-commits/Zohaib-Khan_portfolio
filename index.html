@@ -1,459 +1,831 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zohaib Khan | AI Engineer & Freelancer</title>
-  <meta name="description"
-    content="Portfolio of Zohaib Khan - AI Engineer specializing in Computer Vision, AI Chatbots, and Automation Solutions.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://unpkg.com/lucide@latest" defer></script>
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zohaib Khan | AI Engineer &amp; Data Scientist</title>
+  <meta name="description" content="Zohaib Khan is an AI engineer who builds practical AI tools for businesses: chatbots, automation, and computer vision that actually work." />
+  <meta name="author" content="Zohaib Khan" />
+  <meta property="og:title" content="Zohaib Khan | AI Engineer & Data Scientist" />
+  <meta property="og:description" content="Building AI products that solve real business problems, turning ideas into fully working automated solutions." />
+  <meta property="og:type" content="website" />
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Three.js (backup) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
 <body>
-  <!-- Navigation -->
-  <nav class="glass-nav">
+
+  <!-- ═══════════════════════════════════════════ NAVIGATION ═══ -->
+  <nav id="navbar">
     <div class="nav-container">
-      <a href="#" class="logo">ZK<span>.</span></a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#testimonials">Reviews</a></li>
-        <li><a href="#contact">Contact</a></li>
+      <a href="#hero" class="nav-logo">ZK<span class="logo-dot">.</span></a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#reviews" class="nav-link">Reviews</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
+
+      <a href="#contact" class="btn btn-sm btn-primary nav-cta">Hire Me</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section id="hero" class="hero">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
+  <!-- Mobile pill nav -->
+  <nav class="mobile-pill-nav" id="mobilePillNav">
+    <a href="#about" class="pill-link" aria-label="About"><i data-lucide="user"></i></a>
+    <a href="#skills" class="pill-link" aria-label="Skills"><i data-lucide="zap"></i></a>
+    <a href="#projects" class="pill-link" aria-label="Projects"><i data-lucide="layout-grid"></i></a>
+    <a href="#reviews" class="pill-link" aria-label="Reviews"><i data-lucide="star"></i></a>
+    <a href="#contact" class="pill-link" aria-label="Contact"><i data-lucide="mail"></i></a>
+  </nav>
 
-    <div class="hero-content">
-      <div class="profile-container">
-        <div class="profile-wrapper">
-          <img src="linkedin_profile_picture.webp" alt="Zohaib Khan" class="profile-img"
-            loading="eager"
-            onerror="this.src='https://avatars.githubusercontent.com/u/230161691?v=4'">
+  <!-- ═══════════════════════════════════════════ HERO ═════════ -->
+  <section id="hero" class="hero-section">
+    <canvas id="heroCanvas"></canvas>
+    <div id="hero3d"></div>
+
+    <div class="hero-container">
+      <div class="hero-content reveal">
+        <p class="hero-eyebrow">
+          <span class="badge-dot"></span>
+          <span>Available for new projects</span>
+        </p>
+
+        <h1 class="hero-name">Zohaib <span class="gradient-text">Khan</span></h1>
+
+        <p class="hero-subtitle">AI Engineer, building tools that help real businesses work smarter</p>
+
+        <p class="hero-description">
+          I build AI products that solve real business problems, turning your ideas into fully working automated solutions.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary magnetic-btn" id="btn-projects">
+            <i data-lucide="layout-grid"></i> View Projects
+          </a>
+          <a href="Zohaib_Ai-Engineer_CV.pdf" download class="btn btn-secondary magnetic-btn" id="btn-cv">
+            <i data-lucide="download"></i> Download CV
+          </a>
+          <a href="#contact" class="btn btn-ghost magnetic-btn" id="btn-talk">
+            <i data-lucide="message-circle"></i> Let's Talk
+          </a>
         </div>
       </div>
-      <h1 class="fade-in-up">Hi, I'm <span class="gradient-text">Zohaib Khan</span></h1>
-      <h2 class="fade-in-up delay-1" style="min-height: 32px;">
-        <span id="typewriter"></span>
-      </h2>
-      <p class="fade-in-up delay-2">I build intelligent, scalable AI products that solve real-world business
-        problems—transforming ideas into fully functional automated solutions.</p>
-      <div class="cta-buttons fade-in-up delay-3">
-        <a href="#projects" class="btn btn-primary">View Projects</a>
-        <a href="Zohaib_Ai-Engineer_CV.pdf" download class="btn btn-outline" style="display: flex; align-items: center; gap: 0.5rem;">
-          <i class="fa-solid fa-download"></i> Download CV
-        </a>
-        <a href="#contact" class="btn btn-outline">Let's Talk</a>
+
+      <div class="hero-image reveal">
+        <div class="image-frame">
+          <img
+            src="linkedin_profile_picture.webp"
+            alt="Zohaib Khan, AI Engineer"
+            id="profile-img"
+            onerror="this.src='https://avatars.githubusercontent.com/u/230161691?v=4'"
+          />
+          <div class="image-glow"></div>
+          <div class="presence-dot" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>Scroll to explore</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ STATS ════════ -->
+  <section id="stats" class="stats-section">
+    <div class="stats-container">
+      <div class="stat-item reveal">
+        <div class="stat-number" data-target="2" data-suffix="+">0</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal">
+        <div class="stat-number" data-target="10" data-suffix="+">0</div>
+        <div class="stat-label">Projects Delivered</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal">
+        <div class="stat-number" data-target="3" data-suffix="">0</div>
+        <div class="stat-label">Focus Areas</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal">
+        <div class="stat-number" data-target="100" data-suffix="%">0</div>
+        <div class="stat-label">Client Satisfaction</div>
       </div>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="section">
-    <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
-    <div class="glass-card about-card">
-      <p style="margin-bottom: 1.5rem;">I am an AI Engineer and Freelancer with over a 2+years of hands-on experience in
-        building end-to-end intelligent systems. My work combines strong technical expertise with a results-driven
-        mindset—focusing on clean, maintainable code to deliver practical AI tools spanning from workflow automation
-        bots to locally-hosted, privacy-first LLMs.</p>
+  <!-- ═══════════════════════════════════════════ ABOUT ════════ -->
+  <section id="about" class="about-section">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-tag">Who I Am</span>
+        <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+      </div>
 
-      <h3>What Sets Me Apart</h3>
-      <ul
-        style="margin-top: 1rem; margin-left: 1.5rem; color: var(--text-muted); font-size: 1.05rem; display: flex; flex-direction: column; gap: 0.5rem;">
-        <li>Ability to build end-to-end AI systems independently (Frontend, Backend, and AI integration).</li>
-        <li>Strong focus on real-world applications and optimizing RAG evaluation.</li>
-        <li>Extensive experience with modern stacks (LangChain, Pinecone, SUPABASE, FastAPI).</li>
-      </ul>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p class="about-lead">
+            I'm an AI engineer and freelancer with <strong>2+ years</strong> of experience building complete, working systems, not just prototypes. I care about getting things right and keeping them simple, so what I build is easy for you to use and easy for me to maintain.
+          </p>
+
+          <h3 class="about-subtitle">What Sets Me Apart</h3>
+          <div class="about-timeline">
+            <div class="timeline-item reveal">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-icon"><i data-lucide="layers"></i></div>
+                <p>I can build the whole thing myself: the website, the backend, and the AI that powers it.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-icon"><i data-lucide="target"></i></div>
+                <p>I focus on solutions that hold up in the real world, not just ones that look good in a demo.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-icon"><i data-lucide="code-2"></i></div>
+                <p>I use modern, reliable tools so I can move fast without cutting corners.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-visual reveal">
+          <div class="about-card glass-card" data-tilt>
+            <div class="card-shimmer"></div>
+            <div class="card-glare"></div>
+            <div class="quickfacts-header">
+              <span class="quickfacts-title">At a Glance</span>
+            </div>
+            <div class="quickfacts-list">
+              <div class="quickfacts-item">
+                <div class="quickfacts-icon"><i data-lucide="user"></i></div>
+                <div class="quickfacts-detail">
+                  <span class="quickfacts-label">Role</span>
+                  <span class="quickfacts-value">AI Engineer &amp; Freelancer</span>
+                </div>
+              </div>
+              <div class="quickfacts-item">
+                <div class="quickfacts-icon"><i data-lucide="map-pin"></i></div>
+                <div class="quickfacts-detail">
+                  <span class="quickfacts-label">Based In</span>
+                  <span class="quickfacts-value">Pakistan, working worldwide</span>
+                </div>
+              </div>
+              <div class="quickfacts-item">
+                <div class="quickfacts-icon"><i data-lucide="target"></i></div>
+                <div class="quickfacts-detail">
+                  <span class="quickfacts-label">Focus</span>
+                  <span class="quickfacts-value">Chatbots, automation, computer vision</span>
+                </div>
+              </div>
+              <div class="quickfacts-item">
+                <div class="quickfacts-icon"><i data-lucide="circle-check"></i></div>
+                <div class="quickfacts-detail">
+                  <span class="quickfacts-label">Availability</span>
+                  <span class="quickfacts-value">Open for new projects</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="section">
-    <h2 class="section-title">Core <span class="gradient-text">Expertise</span></h2>
-    <div class="skills-grid">
-      <div class="glass-card skill-card"><i data-lucide="bot"></i><span>AI Chatbots (RAG/LLM)</span></div>
-      <div class="glass-card skill-card"><i data-lucide="eye"></i><span>Computer Vision (YOLO)</span></div>
-      <div class="glass-card skill-card"><i data-lucide="cog"></i><span>Automation & AI Agents</span></div>
-      <div class="glass-card skill-card"><i data-lucide="server"></i><span>Backend (FastAPI)</span></div>
-      <div class="glass-card skill-card"><i data-lucide="database"></i><span>Vector DBs (Pinecone)</span></div>
-      <div class="glass-card skill-card"><i data-lucide="cpu"></i><span>LangChain & Ollama</span></div>
-      <div class="glass-card skill-card"><i data-lucide="layout"></i><span>End-to-End Delivery</span></div>
-      <div class="glass-card skill-card"><i class="fa-brands fa-github"></i><span>Git & GitHub</span></div>
+  <!-- ═══════════════════════════════════════════ SKILLS ═══════ -->
+  <section id="skills" class="skills-section">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-tag">What I Do</span>
+        <h2 class="section-title">Skills &amp; <span class="gradient-text">Expertise</span></h2>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-tile reveal">
+          <div class="skill-tile-icon"><i data-lucide="bot"></i></div>
+          <h4 class="skill-tile-title">Smart Chatbots</h4>
+          <p class="skill-tile-desc">Chatbots that actually know your business and answer customers or staff instantly.</p>
+          <span class="skill-tile-tags">LangChain &middot; Pinecone</span>
+        </div>
+        <div class="skill-tile reveal">
+          <div class="skill-tile-icon"><i data-lucide="eye"></i></div>
+          <h4 class="skill-tile-title">Computer Vision</h4>
+          <p class="skill-tile-desc">Cameras and software that can see, for safety checks, license plates, and more.</p>
+          <span class="skill-tile-tags">YOLO &middot; OpenCV</span>
+        </div>
+        <div class="skill-tile reveal">
+          <div class="skill-tile-icon"><i data-lucide="cog"></i></div>
+          <h4 class="skill-tile-title">Workflow Automation</h4>
+          <p class="skill-tile-desc">Turns repetitive manual work like data entry and follow ups into something that runs on its own.</p>
+          <span class="skill-tile-tags">n8n &middot; Python</span>
+        </div>
+        <div class="skill-tile reveal">
+          <div class="skill-tile-icon"><i data-lucide="mic"></i></div>
+          <h4 class="skill-tile-title">Voice Agents</h4>
+          <p class="skill-tile-desc">AI that can answer phone calls and handle simple requests by voice.</p>
+          <span class="skill-tile-tags">VAPI &middot; Speech AI</span>
+        </div>
+        <div class="skill-tile reveal">
+          <div class="skill-tile-icon"><i data-lucide="server"></i></div>
+          <h4 class="skill-tile-title">Backends &amp; Dashboards</h4>
+          <p class="skill-tile-desc">The reliable engine behind the scenes that powers everything and keeps your data safe.</p>
+          <span class="skill-tile-tags">FastAPI &middot; SQL</span>
+        </div>
+        <div class="skill-tile reveal">
+          <div class="skill-tile-icon"><i data-lucide="layout-grid"></i></div>
+          <h4 class="skill-tile-title">End-to-End Delivery</h4>
+          <p class="skill-tile-desc">I build the whole thing myself, so nothing gets lost between teams or handoffs.</p>
+          <span class="skill-tile-tags">Frontend to AI, solo</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="section">
-    <h2 class="section-title">Featured <span class="gradient-text">Work</span></h2>
+  <!-- ═══════════════════════════════════════════ PROJECTS ═════ -->
+  <section id="projects" class="projects-section">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-tag">My Work</span>
+        <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+        <p class="section-desc">A selection of AI tools and automation systems I have built for real use cases.</p>
+      </div>
 
-    <!-- CATEGORY 1: AI & Chatbots -->
-    <h3 class="domain-heading">AI & LLM Systems</h3>
-    <div class="projects-grid">
-      <!-- Highlighted non-github project -->
-      <article class="glass-card project-card"
-        style="border-color: var(--gradient-start); box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);">
-        <div class="project-content">
-          <h3>MeetingMirror AI Platform <span
-              style="font-size:0.8rem; color:var(--text-muted); font-weight: normal;">(In Progress)</span></h3>
-          <p>Designing a meeting analysis platform featuring AI-generated insights from transcripts, interactive
-            dashboards, user authentication, and Zoom integration. Backend built with FastAPI.</p>
-          <div class="project-tags">
-            <span>FastAPI</span><span>SaaS</span><span>AI Transcripts</span>
+      <!-- Chatbots & Smart Assistants -->
+      <h3 class="project-category-title reveal">
+        <i data-lucide="brain"></i> Chatbots &amp; Smart Assistants
+      </h3>
+      <div class="projects-grid">
+
+        <!-- Animal Faith voice AI audit -->
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="phone-call"></i></div>
+            <h4 class="card-title">Animal Shelter Voice AI Audit</h4>
+          </div>
+          <p class="card-desc">Audited a Dutch animal shelter's AI phone assistant, traced why urgent calls and booking texts were silently failing, and fixed it live with zero downtime.</p>
+          <div class="card-tags">
+            <span class="tag">Voice AI</span>
+            <span class="tag">Automation</span>
+            <span class="tag">n8n</span>
+          </div>
+          <div class="card-footer">
+            <span class="no-link-label"><i data-lucide="lock"></i> Client Project</span>
           </div>
         </div>
-      </article>
 
-      <article class="glass-card project-card">
-        <div class="project-content">
-          <h3>Gemini Text-to-SQL</h3>
-          <p>Leveraged Google's Gemini LLM to interpret natural language questions and reliably translate them into
-            precise SQL database queries.</p>
-          <div class="project-tags"><span>Gemini</span><span>SQL</span><span>LLM</span></div>
-          <div class="project-links"><a href="https://github.com/Zohaib-commits/gemini-text-to-sql" target="_blank"><i
-                class="fa-brands fa-github"></i> Source Code</a></div>
-        </div>
-      </article>
-
-      <article class="glass-card project-card">
-        <div class="project-content">
-          <h3>Vectorless RAG</h3>
-          <p>Innovative approach to Retrieval-Augmented Generation that bypasses traditional vector databases,
-            optimizing lightweight retrieval workflows.</p>
-          <div class="project-tags"><span>LLM</span><span>RAG</span></div>
-          <div class="project-links"><a href="https://github.com/Zohaib-commits/Vectorless_Rag" target="_blank"><i
-                class="fa-brands fa-github"></i> Source Code</a></div>
-        </div>
-      </article>
-
-      <article class="glass-card project-card">
-        <div class="project-content">
-          <h3>RAG Chatbot Implementation</h3>
-          <p>Full implementation pipeline incorporating Pinecone vector stores and Langchain to deliver a contextually
-            aware business assistant.</p>
-          <div class="project-tags"><span>Pinecone</span><span>LangChain</span><span>FastAPI</span></div>
-          <div class="project-links"><a href="https://github.com/Zohaib-commits/Rag_chatbot_implementation"
-              target="_blank"><i class="fa-brands fa-github"></i> Source Code</a></div>
-        </div>
-      </article>
-
-      <article class="glass-card project-card">
-        <div class="project-content">
-          <h3>Scrapper & Invoice Extractor LLM</h3>
-          <p>Focused backend scripts to scrape, process website data, and intelligently extract metrics from messy
-            invoice documents via LLMs.</p>
-          <div class="project-tags"><span>Python</span><span>Scraping</span><span>LLM</span></div>
-          <div class="project-links"><a href="https://github.com/Zohaib-commits/Scrapper_llm" target="_blank"><i
-                class="fa-brands fa-github"></i> Source Code</a></div>
-        </div>
-      </article>
-
-      <article class="glass-card project-card">
-        <div class="project-content">
-          <h3>Corrective RAG Insights</h3>
-          <p>Exploration of Corrective RAG methodologies via Jupyter notebooks to enhance accuracy and context-awareness
-            in LLM chatbots.</p>
-          <div class="project-tags"><span>Jupyter</span><span>Prompt Engineering</span></div>
-          <div class="project-links"><a href="https://github.com/Zohaib-commits/Corrective_RAG" target="_blank"><i
-                class="fa-brands fa-github"></i> Source Code</a></div>
-        </div>
-      </article>
-    </div>
-
-    <!-- CATEGORY 2: Computer Vision -->
-    <h3 class="domain-heading">Computer Vision</h3>
-    <div class="projects-grid">
-      <article class="glass-card project-card">
-        <div class="project-content">
-          <h3>YOLOv10 License Plate Target</h3>
-          <p>Python-based object detection system. Trained and validated on custom datasets to extract frames and
-            accurately recognize license plates with an automated SQL data store.</p>
-          <div class="project-tags"><span>YOLOv10</span><span>Computer Vision</span><span>SQL</span></div>
-          <div class="project-links"><a href="https://github.com/Zohaib-commits/yolov10-license-plate-sql-database"
-              target="_blank"><i class="fa-brands fa-github"></i> Source Code</a></div>
-        </div>
-      </article>
-
-      <article class="glass-card project-card">
-        <div class="project-content">
-          <h3>Blood Spectroscopy Analysis</h3>
-          <p>Data science and machine learning analysis applied to blood spectroscopy data to predict indicators and
-            unearth hidden biological patterns.</p>
-          <div class="project-tags"><span>Data Science</span><span>Machine Learning</span></div>
-          <div class="project-links"><a href="https://github.com/Zohaib-commits/Blood_spectroscopy" target="_blank"><i
-                class="fa-brands fa-github"></i> Source Code</a></div>
-        </div>
-      </article>
-    </div>
-
-    <!-- CATEGORY 3: Automation & APIs -->
-    <h3 class="domain-heading">Automation, APIs & Voice</h3>
-    <div class="projects-grid">
-      <article class="glass-card project-card">
-        <div class="project-content">
-          <h3>Automated Invoice Processing</h3>
-          <p>A workflow automation system built to eliminate manual accounting data entry. Supports multi-format
-            invoices and features robust Google Sheets integration.</p>
-          <div class="project-tags"><span>Python</span><span>Data Automation</span><span>APIs</span></div>
-          <div class="project-links"><a href="https://github.com/Zohaib-commits/automated_invoice_processing"
-              target="_blank"><i class="fa-brands fa-github"></i> Source Code</a></div>
-        </div>
-      </article>
-
-      <article class="glass-card project-card">
-        <div class="project-content">
-          <h3>Local AI Voice Agent (VAPI)</h3>
-          <p>An interactive, responsive AI voice agent implementing VAPI for seamless speech-based interactions and
-            local task management.</p>
-          <div class="project-tags"><span>Python</span><span>Voice AI</span></div>
-          <div class="project-links"><a href="https://github.com/Zohaib-commits/AI_voice_agent_vapi" target="_blank"><i
-                class="fa-brands fa-github"></i> Source Code</a></div>
-        </div>
-      </article>
-
-      <article class="glass-card project-card">
-        <div class="project-content">
-          <h3>N8n Personal Assistant Workflow</h3>
-          <p>Custom multi-step automation workflow constructed using n8n. Acts as a personal assistant for scheduled
-            actions and notification systems.</p>
-          <div class="project-tags"><span>n8n</span><span>Agents</span><span>Automation</span></div>
-          <div class="project-links"><a href="https://github.com/Zohaib-commits/N8n-personal_assistant_workflow"
-              target="_blank"><i class="fa-brands fa-github"></i> Source Code</a></div>
-        </div>
-      </article>
-
-      <article class="glass-card project-card">
-        <div class="project-content">
-          <h3>FastAPI Services Framework</h3>
-          <p>Production-ready backend architecture components leveraging FastAPI to serve machine learning models and
-            handle user authentication safely.</p>
-          <div class="project-tags"><span>Python</span><span>FastAPI</span><span>APIs</span></div>
-          <div class="project-links"><a href="https://github.com/Zohaib-commits/Fast_api" target="_blank"><i
-                class="fa-brands fa-github"></i> Source Code</a></div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="section testimonials-section">
-    <h2 class="section-title">Client <span class="gradient-text">Recommendations</span></h2>
-    <div class="testimonials-wrapper">
-      <button class="testimonial-arrow testimonial-prev" aria-label="Previous">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-
-      <div class="testimonials-track-container">
-        <div class="testimonials-track" id="testimonialsTrack">
-
-          <!-- Testimonial 1 — E-commerce product Q&A bot (RAG + Pinecone) -->
-          <div class="testimonial-slide">
-            <div class="glass-card testimonial-card">
-              <div class="testimonial-quote"><i class="fa-solid fa-quote-left"></i></div>
-              <p class="testimonial-text">We needed a shopping assistant that could answer size, return, and stock questions for 10,000+ SKUs. Zohaib delivered a Pinecone-powered chatbot that handles it all instantly — our support tickets dropped by 60% in the first month.</p>
-              <div class="testimonial-author">
-                <div class="author-avatar">SM</div>
-                <div class="author-info">
-                  <span class="author-name">Sarah Mitchell</span>
-                  <span class="author-role">Head of E-Commerce, StyleHaus</span>
-                </div>
-                <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-              </div>
-            </div>
+        <!-- DakCentrale WhatsApp booking bot -->
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="calendar-check"></i></div>
+            <h4 class="card-title">WhatsApp Roofing Inspection Bot</h4>
           </div>
-
-          <!-- Testimonial 2 — HR onboarding bot (Ollama + FastAPI) -->
-          <div class="testimonial-slide">
-            <div class="glass-card testimonial-card">
-              <div class="testimonial-quote"><i class="fa-solid fa-quote-left"></i></div>
-              <p class="testimonial-text">New hires used to flood our HR desk with the same policy questions every week. Zohaib built us a private, locally-hosted onboarding assistant using Ollama and FastAPI — now employees get instant answers, and our HR team focuses on actual work.</p>
-              <div class="testimonial-author">
-                <div class="author-avatar">DT</div>
-                <div class="author-info">
-                  <span class="author-name">Daniel Torres</span>
-                  <span class="author-role">HR Director, Recruivo</span>
-                </div>
-                <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-              </div>
-            </div>
+          <p class="card-desc">Built and debugged a WhatsApp assistant that qualifies leads, checks real inspector availability, and books the appointment directly, tested end to end before going live.</p>
+          <div class="card-tags">
+            <span class="tag">WhatsApp AI</span>
+            <span class="tag">Automation</span>
+            <span class="tag">Booking</span>
           </div>
-
-          <!-- Testimonial 3 — Construction site PPE safety (YOLO) -->
-          <div class="testimonial-slide">
-            <div class="glass-card testimonial-card">
-              <div class="testimonial-quote"><i class="fa-solid fa-quote-left"></i></div>
-              <p class="testimonial-text">We needed real-time CCTV monitoring to detect workers without hard hats or safety vests on our sites. Zohaib's YOLO-based vision system flags violations instantly and logs every incident — it's already prevented two serious accidents.</p>
-              <div class="testimonial-author">
-                <div class="author-avatar">BA</div>
-                <div class="author-info">
-                  <span class="author-name">Bilal Akhtar</span>
-                  <span class="author-role">Safety Manager, BuildCore Projects</span>
-                </div>
-                <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-              </div>
-            </div>
+          <div class="card-footer">
+            <span class="no-link-label"><i data-lucide="lock"></i> Client Project</span>
           </div>
-
-          <!-- Testimonial 4 — Real estate lead nurturing (n8n + LLM) -->
-          <div class="testimonial-slide">
-            <div class="glass-card testimonial-card">
-              <div class="testimonial-quote"><i class="fa-solid fa-quote-left"></i></div>
-              <p class="testimonial-text">Zohaib automated our entire lead pipeline — from form submission to personalised AI-written follow-up emails, CRM updates, and WhatsApp alerts. What used to take our agents hours now runs on its own. Truly a game-changer for our agency.</p>
-              <div class="testimonial-author">
-                <div class="author-avatar">EC</div>
-                <div class="author-info">
-                  <span class="author-name">Emma Clarke</span>
-                  <span class="author-role">Director, PrimeNest Realty</span>
-                </div>
-                <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial 5 — AI resume screener (LangChain + FastAPI + Pinecone) -->
-          <div class="testimonial-slide">
-            <div class="glass-card testimonial-card">
-              <div class="testimonial-quote"><i class="fa-solid fa-quote-left"></i></div>
-              <p class="testimonial-text">Screening 500+ resumes per role was killing our team's time. Zohaib built an AI screener using LangChain and Pinecone that ranks candidates by job-fit in seconds. Our time-to-shortlist dropped from 3 days to under 20 minutes.</p>
-              <div class="testimonial-author">
-                <div class="author-avatar">JO</div>
-                <div class="author-info">
-                  <span class="author-name">James Okafor</span>
-                  <span class="author-role">Talent Acquisition Lead, HireSmart</span>
-                </div>
-                <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial 6 — Restaurant phone ordering agent (VAPI) -->
-          <div class="testimonial-slide">
-            <div class="glass-card testimonial-card">
-              <div class="testimonial-quote"><i class="fa-solid fa-quote-left"></i></div>
-              <p class="testimonial-text">We were losing orders because staff couldn't always answer the phone during rush hours. Zohaib's VAPI voice agent now handles phone orders 24/7, confirms items, quotes wait times, and logs everything automatically. Our missed-order rate is basically zero now.</p>
-              <div class="testimonial-author">
-                <div class="author-avatar">PS</div>
-                <div class="author-info">
-                  <span class="author-name">Priya Sharma</span>
-                  <span class="author-role">Operations Head, CaféChain Group</span>
-                </div>
-                <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-              </div>
-            </div>
-          </div>
-
-        </div><!-- /.testimonials-track -->
-      </div><!-- /.testimonials-track-container -->
-
-      <button class="testimonial-arrow testimonial-next" aria-label="Next">
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
-    </div><!-- /.testimonials-wrapper -->
-
-    <div class="testimonial-dots" id="testimonialDots"></div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="section contact-section">
-    <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
-    <p class="contact-subtitle">I build production-grade AI systems, automations, and intelligent products. Have a project or idea? Drop me a message and let's discuss how I can help.</p>
-
-    <div class="contact-layout">
-
-      <!-- Left: Info + Socials -->
-      <div class="contact-info glass-card">
-
-        <!-- Availability badge -->
-        <div class="availability-badge">
-          <span class="avail-dot"></span>
-          Available for new projects
         </div>
 
-        <h3>Let's Build Something<br><span class="gradient-text">Remarkable</span></h3>
-        <p>Whether you need a custom AI chatbot, a computer vision pipeline, or a full automation stack — I'm ready to help turn your idea into a working product.</p>
+        <!-- Ora FacePass outbound sales voice agent -->
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="phone-outgoing"></i></div>
+            <h4 class="card-title">Outbound AI Sales Caller Audit</h4>
+          </div>
+          <p class="card-desc">Audited an AI voice sales system, fixed a broken demo-booking flow, and planned a safe path to scale it to 1,000 more calls without blowing the automation budget.</p>
+          <div class="card-tags">
+            <span class="tag">Voice AI</span>
+            <span class="tag">n8n</span>
+            <span class="tag">CRM</span>
+          </div>
+          <div class="card-footer">
+            <span class="no-link-label"><i data-lucide="lock"></i> Client Project</span>
+          </div>
+        </div>
 
-        <ul class="contact-details-list">
-          <li><i class="fa-solid fa-envelope"></i> developwithzohaib@gmail.com</li>
-          <li><i class="fa-brands fa-whatsapp"></i> +92 336 858 3757</li>
-          <li><i class="fa-solid fa-location-dot"></i> Pakistan · Available Worldwide</li>
-        </ul>
+        <!-- Gemini Text-to-SQL -->
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="database"></i></div>
+            <h4 class="card-title">Gemini Text-to-SQL</h4>
+          </div>
+          <p class="card-desc">Ask a database a plain English question and get the right answer back, no query language required.</p>
+          <div class="card-tags">
+            <span class="tag">Gemini</span>
+            <span class="tag">SQL</span>
+            <span class="tag">LLM</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/gemini-text-to-sql" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
 
-        <div class="contact-info-divider"></div>
+        <!-- Vectorless RAG -->
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="zap"></i></div>
+            <h4 class="card-title">Vectorless RAG</h4>
+          </div>
+          <p class="card-desc">A faster, lighter way to build AI chatbots that search your documents for answers, without the usual heavy database setup.</p>
+          <div class="card-tags">
+            <span class="tag">LLM</span>
+            <span class="tag">RAG</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/Vectorless_Rag" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
 
-        <div class="social-links">
-          <a href="https://github.com/Zohaib-commits" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/zohaib-khan-761530200/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=developwithzohaib@gmail.com" target="_blank" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-          <a href="https://wa.me/923368583757" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <!-- RAG Chatbot -->
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="bot"></i></div>
+            <h4 class="card-title">RAG Chatbot Implementation</h4>
+          </div>
+          <p class="card-desc">A chatbot that actually knows your business, trained on your own documents so it gives accurate, relevant answers.</p>
+          <div class="card-tags">
+            <span class="tag">Pinecone</span>
+            <span class="tag">LangChain</span>
+            <span class="tag">FastAPI</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/Rag_chatbot_implementation" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Scrapper & Invoice Extractor -->
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="file-search"></i></div>
+            <h4 class="card-title">Scrapper &amp; Invoice Extractor LLM</h4>
+          </div>
+          <p class="card-desc">Automatically pulls the numbers you need out of messy invoices and websites, no manual copy and pasting.</p>
+          <div class="card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Scraping</span>
+            <span class="tag">LLM</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/Scrapper_llm" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Corrective RAG -->
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="refresh-cw"></i></div>
+            <h4 class="card-title">Corrective RAG Insights</h4>
+          </div>
+          <p class="card-desc">Research into making AI chatbots double-check themselves, so they give more accurate answers.</p>
+          <div class="card-tags">
+            <span class="tag">Jupyter</span>
+            <span class="tag">Prompt Engineering</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/Corrective_RAG" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
+            </a>
+          </div>
         </div>
 
       </div>
 
-      <!-- Right: Contact Form -->
-      <form class="contact-form glass-card" id="contactForm" novalidate>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="contactName">Full Name</label>
-            <input type="text" id="contactName" name="name" placeholder="John Doe" required autocomplete="name">
-          </div>
-          <div class="form-group">
-            <label for="contactEmail">Email Address</label>
-            <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required autocomplete="email">
-          </div>
-        </div>
+      <!-- Computer Vision -->
+      <h3 class="project-category-title reveal">
+        <i data-lucide="eye"></i> Computer Vision
+      </h3>
+      <div class="projects-grid">
 
-        <div class="form-group">
-          <label for="contactReason">Reason for Contact</label>
-          <div class="select-wrapper">
-            <select id="contactReason" name="reason" required>
-              <option value="" disabled selected>Select a reason…</option>
-              <option value="collaboration">🤝 Collaboration on a Project</option>
-              <option value="hire">💼 Hire Me as a Freelancer</option>
-              <option value="service">🛠️ Request a Specific Service</option>
-              <option value="consulting">🧠 AI Consulting / Strategy</option>
-              <option value="enquiry">💬 General Enquiry</option>
-            </select>
-            <i class="fa-solid fa-chevron-down select-icon"></i>
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="scan"></i></div>
+            <h4 class="card-title">YOLOv10 License Plate Reader</h4>
+          </div>
+          <p class="card-desc">A camera system that automatically reads and logs vehicle license plates in real time.</p>
+          <div class="card-tags">
+            <span class="tag">YOLOv10</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">SQL</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/yolov10-license-plate-sql-database" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
+            </a>
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="contactMessage">Message</label>
-          <textarea id="contactMessage" name="message" rows="5" placeholder="Tell me about your project, idea, or question…" required></textarea>
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="activity"></i></div>
+            <h4 class="card-title">Blood Spectroscopy Analysis</h4>
+          </div>
+          <p class="card-desc">Used machine learning on lab data to help spot health indicators that are hard to catch by eye.</p>
+          <div class="card-tags">
+            <span class="tag">Data Science</span>
+            <span class="tag">Machine Learning</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/Blood_spectroscopy" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
+            </a>
+          </div>
         </div>
 
-        <button type="submit" class="btn btn-primary form-submit" id="formSubmitBtn">
-          <i class="fa-solid fa-paper-plane"></i>
-          <span>Send Message</span>
-        </button>
+      </div>
 
-        <!-- Success / Error feedback -->
-        <div class="form-feedback" id="formFeedback"></div>
-      </form>
+      <!-- Automation & Voice -->
+      <h3 class="project-category-title reveal">
+        <i data-lucide="cog"></i> Automation &amp; Voice
+      </h3>
+      <div class="projects-grid">
 
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="file-text"></i></div>
+            <h4 class="card-title">Automated Invoice Processing</h4>
+          </div>
+          <p class="card-desc">Removes manual data entry for accounting. Invoices go in, organized records come out in Google Sheets automatically.</p>
+          <div class="card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Data Automation</span>
+            <span class="tag">APIs</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/automated_invoice_processing" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="mic"></i></div>
+            <h4 class="card-title">Local AI Voice Agent</h4>
+          </div>
+          <p class="card-desc">A voice assistant you can actually talk to. It listens, responds, and gets tasks done.</p>
+          <div class="card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Voice AI</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/AI_voice_agent_vapi" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="workflow"></i></div>
+            <h4 class="card-title">Personal Assistant Workflow</h4>
+          </div>
+          <p class="card-desc">A background assistant that handles scheduled tasks and sends the right notifications automatically.</p>
+          <div class="card-tags">
+            <span class="tag">n8n</span>
+            <span class="tag">Agents</span>
+            <span class="tag">Automation</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/N8n-personal_assistant_workflow" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="server"></i></div>
+            <h4 class="card-title">FastAPI Services Framework</h4>
+          </div>
+          <p class="card-desc">The solid backend foundation that safely runs AI models and manages user logins behind the scenes.</p>
+          <div class="card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">APIs</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/Fast_api" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <footer>
-    <p>&copy; 2026 Zohaib Khan. All rights reserved.</p>
+  <!-- ═══════════════════════════════════════════ REVIEWS ══════ -->
+  <section id="reviews" class="reviews-section">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-tag">Social Proof</span>
+        <h2 class="section-title">Client <span class="gradient-text">Testimonials</span></h2>
+        <p class="section-desc">Real results from real clients. Here's what they say about working with me.</p>
+      </div>
+
+      <div class="carousel-wrapper reveal">
+        <div class="carousel-track" id="carouselTrack">
+
+          <div class="testimonial-card glass-card">
+            <div class="testimonial-quote"><i data-lucide="quote"></i></div>
+            <p class="testimonial-text">"We needed a shopping assistant that could answer size, return, and stock questions for 10,000+ SKUs. Zohaib delivered a Pinecone-powered chatbot that handles it all instantly, and our support tickets dropped by 60% in the first month."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">SM</div>
+              <div class="author-info">
+                <strong>Sarah Mitchell</strong>
+                <span>Head of E-Commerce, StyleHaus</span>
+              </div>
+              <div class="testimonial-stars">
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card glass-card">
+            <div class="testimonial-quote"><i data-lucide="quote"></i></div>
+            <p class="testimonial-text">"New hires used to flood our HR desk with the same policy questions every week. Zohaib built us a private, locally-hosted onboarding assistant using Ollama and FastAPI. Now employees get instant answers, and our HR team focuses on actual work."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">DT</div>
+              <div class="author-info">
+                <strong>Daniel Torres</strong>
+                <span>HR Director, Recruivo</span>
+              </div>
+              <div class="testimonial-stars">
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card glass-card">
+            <div class="testimonial-quote"><i data-lucide="quote"></i></div>
+            <p class="testimonial-text">"We needed real-time CCTV monitoring to detect workers without hard hats or safety vests on our sites. Zohaib's YOLO-based vision system flags violations instantly and logs every incident. It has already prevented two serious accidents."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">BA</div>
+              <div class="author-info">
+                <strong>Bilal Akhtar</strong>
+                <span>Safety Manager, BuildCore Projects</span>
+              </div>
+              <div class="testimonial-stars">
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card glass-card">
+            <div class="testimonial-quote"><i data-lucide="quote"></i></div>
+            <p class="testimonial-text">"Zohaib automated our entire lead pipeline, from form submission to personalised AI-written follow-up emails, CRM updates, and WhatsApp alerts. What used to take our agents hours now runs on its own. Truly a game-changer for our agency."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">EC</div>
+              <div class="author-info">
+                <strong>Emma Clarke</strong>
+                <span>Director, PrimeNest Realty</span>
+              </div>
+              <div class="testimonial-stars">
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card glass-card">
+            <div class="testimonial-quote"><i data-lucide="quote"></i></div>
+            <p class="testimonial-text">"Screening 500+ resumes per role was killing our team's time. Zohaib built an AI screener using LangChain and Pinecone that ranks candidates by job fit in seconds. Our time-to-shortlist dropped from 3 days to under 20 minutes."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">JO</div>
+              <div class="author-info">
+                <strong>James Okafor</strong>
+                <span>Talent Acquisition Lead, HireSmart</span>
+              </div>
+              <div class="testimonial-stars">
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card glass-card">
+            <div class="testimonial-quote"><i data-lucide="quote"></i></div>
+            <p class="testimonial-text">"We were losing orders because staff couldn't always answer the phone during rush hours. Zohaib's voice agent now handles phone orders 24/7, confirms items, quotes wait times, and logs everything automatically. Our missed-order rate is basically zero now."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">PS</div>
+              <div class="author-info">
+                <strong>Priya Sharma</strong>
+                <span>Operations Head, CaféChain Group</span>
+              </div>
+              <div class="testimonial-stars">
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="prevBtn" aria-label="Previous"><i data-lucide="chevron-left"></i></button>
+          <div class="carousel-dots" id="carouselDots"></div>
+          <button class="carousel-btn" id="nextBtn" aria-label="Next"><i data-lucide="chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ CONTACT ══════ -->
+  <section id="contact" class="contact-section">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Let's <span class="gradient-text">Work Together</span></h2>
+        <p class="section-desc">Have a project in mind? I'd love to hear about it. Send a message and I'll get back to you within 24 hours.</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Info -->
+        <div class="contact-info reveal">
+          <div class="availability-badge">
+            <span class="pulse-dot"></span>
+            <span>Available for new projects</span>
+          </div>
+
+          <div class="contact-items">
+            <a href="mailto:developwithzohaib@gmail.com" class="contact-item glass-card">
+              <div class="contact-icon"><i data-lucide="mail"></i></div>
+              <div class="contact-detail">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">developwithzohaib@gmail.com</span>
+              </div>
+            </a>
+            <a href="https://wa.me/923368583757" target="_blank" rel="noopener" class="contact-item glass-card">
+              <div class="contact-icon contact-icon-green"><i data-lucide="message-circle"></i></div>
+              <div class="contact-detail">
+                <span class="contact-label">WhatsApp</span>
+                <span class="contact-value">+92 336 858 3757</span>
+              </div>
+            </a>
+            <div class="contact-item glass-card">
+              <div class="contact-icon contact-icon-gold"><i data-lucide="map-pin"></i></div>
+              <div class="contact-detail">
+                <span class="contact-label">Location</span>
+                <span class="contact-value">Pakistan &middot; Available Worldwide</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="https://github.com/Zohaib-commits" target="_blank" rel="noopener" class="social-btn" aria-label="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/zohaib-khan-761530200/" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=developwithzohaib@gmail.com" target="_blank" rel="noopener" class="social-btn" aria-label="Gmail">
+              <i class="fa-brands fa-google"></i>
+            </a>
+            <a href="https://wa.me/923368583757" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-wrapper reveal">
+          <form class="contact-form glass-card" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactName" class="form-label">Full Name</label>
+                <input type="text" id="contactName" name="name" class="form-input" placeholder="John Doe" required />
+              </div>
+              <div class="form-group">
+                <label for="contactEmail" class="form-label">Email Address</label>
+                <input type="email" id="contactEmail" name="email" class="form-input" placeholder="john@example.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contactReason" class="form-label">Reason for Contact</label>
+              <select id="contactReason" name="reason" class="form-input form-select" required>
+                <option value="" disabled selected>Select a reason...</option>
+                <option value="Collaboration on a Project">Collaboration on a Project</option>
+                <option value="Hire Me as a Freelancer">Hire Me as a Freelancer</option>
+                <option value="Request a Specific Service">Request a Specific Service</option>
+                <option value="AI Consulting / Strategy">AI Consulting / Strategy</option>
+                <option value="General Enquiry">General Enquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="contactMessage" class="form-label">Message</label>
+              <textarea id="contactMessage" name="message" class="form-input form-textarea" placeholder="Tell me about your project..." required rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full magnetic-btn" id="submitBtn">
+              <i data-lucide="send"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ FOOTER ═══════ -->
+  <footer class="footer">
+    <div class="footer-line"></div>
+    <div class="footer-container">
+      <a href="#hero" class="footer-logo">ZK<span class="logo-dot">.</span></a>
+      <p class="footer-copy">© 2026 Zohaib Khan. All rights reserved.</p>
+      <div class="footer-socials">
+        <a href="https://github.com/Zohaib-commits" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/zohaib-khan-761530200/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://wa.me/923368583757" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
   </footer>
 
   <script src="script.js"></script>
-  <script>
-    lucide.createIcons();
-  </script>
 </body>
-
 </html>
