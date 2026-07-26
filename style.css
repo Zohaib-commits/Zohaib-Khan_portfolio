@@ -803,7 +803,7 @@ select:focus-visible,
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 20px;
 }
 
@@ -1486,7 +1486,7 @@ select:focus-visible,
   .hero-description { max-width: 100%; margin-left: auto; margin-right: auto; }
   .hero-actions { justify-content: center; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .contact-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: minmax(0, 1fr); }
   .testimonial-card { flex: 0 0 calc(50% - 12px); }
 }
 
@@ -1515,6 +1515,31 @@ select:focus-visible,
   .btn { width: 100%; justify-content: center; }
   .contact-form { padding: 24px; }
   .section-header { margin-bottom: 40px; }
+  /* Tighter gutters reclaim horizontal room on small phones */
+  .section-container { padding: 0 16px; }
+  .skill-tile { padding: 22px; }
+  .contact-item { padding: 14px 16px; }
+  /* Larger tap targets for footer social icons (min 44px) */
+  .footer-socials { gap: 8px; }
+  .footer-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* ── Guard against horizontal overflow on all small screens ──── */
+@media (max-width: 768px) {
+  /* Decorative hero glow bleeds ~50px past the photo; clip it so it
+     never forces a horizontal scrollbar (clip = no scroll container) */
+  .hero-section { overflow-x: clip; }
+  /* Let long unbreakable strings (e.g. email address) shrink/wrap
+     inside the flex contact rows instead of blowing out the grid */
+  .contact-item { min-width: 0; }
+  .contact-detail { min-width: 0; }
+  .contact-value { overflow-wrap: anywhere; word-break: break-word; }
 }
 
 /* ── Reduced motion ──────────────────────────────────────── */
