@@ -21,3 +21,6 @@ node_modules/
 dist/
 build/
 .env
+
+# Local media / showcase assets (kept out of the repo)
+showcase_video/
