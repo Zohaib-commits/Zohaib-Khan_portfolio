@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scroll Demo · Zohaib Khan</title>
+  <meta name="description" content="A modern scroll-driven experience demo for Zohaib Khan's portfolio." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="scroll-demo.css" />
+</head>
+<body>
+
+  <div class="progress-bar" id="progressBar"></div>
+  <a href="index.html" class="back-link">← Back to portfolio</a>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero-grid" data-parallax="0.15"></div>
+    <div class="hero-orb a" data-parallax="0.25"></div>
+    <div class="hero-orb b" data-parallax="0.4"></div>
+
+    <div class="wrap hero-inner">
+      <p class="eyebrow" data-hero-el>Scroll experience · concept</p>
+      <h1 data-hero-el>Build AI that<br><span class="grad">actually ships.</span></h1>
+      <p class="lead" data-hero-el>A preview of how Zohaib's portfolio can feel once every scroll tells part of the story. Keep scrolling.</p>
+    </div>
+
+    <div class="scroll-cue">
+      <span>Scroll</span>
+      <div class="rail"></div>
+    </div>
+  </section>
+
+  <!-- ═══ INTRO / WORD REVEAL ═══ -->
+  <section class="intro">
+    <div class="wrap">
+      <p class="eyebrow fade-up">The idea</p>
+      <p class="big reveal-words">
+        Most portfolios sit still. This one <b>moves with you</b> — sections lock, projects glide sideways,
+        and depth builds as you read. <span class="muted">The same craft Zohaib puts into AI products, applied to the page itself.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ HORIZONTAL PINNED GALLERY ═══ -->
+  <section class="h-section" id="work">
+    <div class="wrap h-head">
+      <div>
+        <p class="eyebrow">Selected work</p>
+        <h2>Scroll sideways</h2>
+      </div>
+      <div style="flex:1; min-width:180px;">
+        <div class="h-counter"><b id="hCurrent">01</b> / <span id="hTotal">05</span></div>
+        <div class="h-progress"><div class="fill" id="hFill"></div></div>
+      </div>
+    </div>
+
+    <div class="h-viewport">
+      <div class="h-track" id="hTrack">
+        <article class="h-panel">
+          <span class="num">01</span>
+          <span class="tag">Voice AI</span>
+          <h3>WhatsApp Roofing Inspection Bot</h3>
+          <p>A WhatsApp assistant that qualifies leads, checks real inspector availability, and books the appointment end to end.</p>
+          <div class="stat"><span class="v">24/7</span><span class="l">booking, no missed leads</span></div>
+        </article>
+        <article class="h-panel">
+          <span class="num">02</span>
+          <span class="tag">Automation</span>
+          <h3>Outbound AI Sales Caller</h3>
+          <p>Audited a live AI voice sales system, fixed a broken demo-booking flow, and planned a safe path to 1,000+ calls.</p>
+          <div class="stat"><span class="v">1000+</span><span class="l">calls scaled safely</span></div>
+        </article>
+        <article class="h-panel">
+          <span class="num">03</span>
+          <span class="tag">Computer Vision</span>
+          <h3>YOLOv10 License Plate Reader</h3>
+          <p>A camera system that reads and logs vehicle plates in real time, straight into a SQL database.</p>
+          <div class="stat"><span class="v">Real-time</span><span class="l">detection + logging</span></div>
+        </article>
+        <article class="h-panel">
+          <span class="num">04</span>
+          <span class="tag">RAG · LLM</span>
+          <h3>Business RAG Chatbot</h3>
+          <p>A chatbot trained on a company's own documents so it answers customers accurately, cutting support load.</p>
+          <div class="stat"><span class="v">-60%</span><span class="l">support tickets</span></div>
+        </article>
+        <article class="h-panel">
+          <span class="num">05</span>
+          <span class="tag">Workflow</span>
+          <h3>Automated Invoice Processing</h3>
+          <p>Invoices go in, organized records come out in Google Sheets automatically. No manual data entry.</p>
+          <div class="stat"><span class="v">0 hrs</span><span class="l">manual entry left</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ STICKY SPLIT SECTION ═══ -->
+  <section class="sticky-sec">
+    <div class="wrap">
+      <p class="eyebrow fade-up">How it works</p>
+      <div class="sticky-grid">
+        <div class="sticky-visual">
+          <div class="orb-card">
+            <div class="ring r2"></div>
+            <div class="ring r1"></div>
+            <div class="core" id="stickyCore"></div>
+          </div>
+        </div>
+        <div class="sticky-steps">
+          <div class="step fade-up">
+            <span class="k">01 · Understand</span>
+            <h2>Start with the real problem</h2>
+            <p>Every build begins with the business goal, not the tech. What breaks today, and what does success actually look like.</p>
+          </div>
+          <div class="step fade-up">
+            <span class="k">02 · Build</span>
+            <h2>Frontend, backend, and the AI</h2>
+            <p>One person, one coherent system. Nothing gets lost between teams because there are no handoffs.</p>
+          </div>
+          <div class="step fade-up">
+            <span class="k">03 · Ship</span>
+            <h2>Tested, then live</h2>
+            <p>It has to hold up in the real world, not just a demo. Everything is checked end to end before it goes live.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ STATS (count up) ═══ -->
+  <section class="stats-sec">
+    <div class="wrap">
+      <p class="eyebrow fade-up">By the numbers</p>
+      <div class="stats-grid">
+        <div class="stat-box fade-up"><div class="n"><span data-count="2">0</span><span class="plus">+</span></div><div class="l">Years experience</div></div>
+        <div class="stat-box fade-up"><div class="n"><span data-count="10">0</span><span class="plus">+</span></div><div class="l">Projects delivered</div></div>
+        <div class="stat-box fade-up"><div class="n"><span data-count="3">0</span></div><div class="l">Focus areas</div></div>
+        <div class="stat-box fade-up"><div class="n"><span data-count="100">0</span><span class="plus">%</span></div><div class="l">Client satisfaction</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="fade-up">Like this <span class="grad">motion?</span></h2>
+      <p class="fade-up">This is a concept preview. The same effects can flow across the whole portfolio.</p>
+      <a href="index.html" class="btn fade-up">← Back to the live portfolio</a>
+    </div>
+  </section>
+
+  <!-- Libraries (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="scroll-demo.js"></script>
+</body>
+</html>
