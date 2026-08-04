@@ -1,13 +1,13 @@
 /**
- * Portfolio chatbot backend — Cloudflare Worker
+ * Portfolio chatbot backend — Cloudflare Worker (Groq)
  * ------------------------------------------------------------
- * A tiny proxy that lets the portfolio site talk to Claude without
- * ever exposing the Anthropic API key in the browser.
+ * A tiny proxy that lets the portfolio site talk to a Groq-hosted LLM
+ * without ever exposing the API key in the browser.
  *
  * DEPLOY (no build step needed):
  *   1. Create a Worker in the Cloudflare dashboard.
  *   2. Paste this whole file in.
- *   3. Settings -> Variables -> add a SECRET named ANTHROPIC_API_KEY.
+ *   3. Settings -> Variables -> add a SECRET named GROQ_API_KEY.
  *   4. Deploy, copy the Worker URL, and paste it into chatbot.js
  *      (the CHATBOT_API_URL constant).
  *
@@ -15,18 +15,19 @@
  */
 
 // ── Configuration ────────────────────────────────────────────
-// The Claude model that answers questions. claude-opus-4-8 is the most
-// capable. For a public bot that may get lots of traffic you can switch to
-// "claude-haiku-4-5" (much cheaper, still great for FAQ-style answers).
-const MODEL = "claude-opus-4-8";
+// The Groq-hosted model that answers questions. Free and fast.
+// If Groq retires this model, pick a current one from
+// https://console.groq.com/docs/models and update this line.
+const MODEL = "llama-3.3-70b-versatile";
 const MAX_TOKENS = 1024;
+const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
 // Which websites are allowed to call this Worker. Keep "*" to allow any
 // origin (simplest — works immediately), or replace with your exact site,
 // e.g. ["https://zohaib-commits.github.io", "http://localhost:8137"].
 const ALLOWED_ORIGINS = ["*"];
 
-// Basic abuse guards so a single visitor can't run up a huge bill.
+// Basic abuse guards so a single visitor can't run up the free quota.
 const MAX_MESSAGES = 24;          // conversation turns kept per request
 const MAX_TOTAL_CHARS = 12000;    // total characters of user input per request
 
@@ -96,7 +97,7 @@ export default {
     if (request.method !== "POST") {
       return json({ error: "Method not allowed" }, 405, corsHeaders);
     }
-    if (!env.ANTHROPIC_API_KEY) {
+    if (!env.GROQ_API_KEY) {
       return json({ error: "Server is not configured (missing API key)." }, 500, corsHeaders);
     }
 
@@ -128,21 +129,20 @@ export default {
       return json({ error: "Message is too long." }, 400, corsHeaders);
     }
 
-    // Call the Anthropic Messages API.
+    // Call the Groq API (OpenAI-compatible). The system prompt is the first message.
     let apiRes;
     try {
-      apiRes = await fetch("https://api.anthropic.com/v1/messages", {
+      apiRes = await fetch(GROQ_URL, {
         method: "POST",
         headers: {
           "content-type": "application/json",
-          "x-api-key": env.ANTHROPIC_API_KEY,
-          "anthropic-version": "2023-06-01",
+          "authorization": `Bearer ${env.GROQ_API_KEY}`,
         },
         body: JSON.stringify({
           model: MODEL,
           max_tokens: MAX_TOKENS,
-          system: SYSTEM_PROMPT,
-          messages,
+          temperature: 0.6,
+          messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
         }),
       });
     } catch {
@@ -158,11 +158,9 @@ export default {
     }
 
     const data = await apiRes.json();
-    const reply = (data.content || [])
-      .filter((b) => b.type === "text")
-      .map((b) => b.text)
-      .join("\n")
-      .trim();
+    const reply = (data.choices && data.choices[0] && data.choices[0].message
+      ? data.choices[0].message.content
+      : "").trim();
 
     return json({ reply: reply || "Sorry, I couldn't come up with an answer. Try rephrasing?" }, 200, corsHeaders);
   },
