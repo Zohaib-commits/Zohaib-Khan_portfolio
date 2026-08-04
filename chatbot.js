@@ -7,7 +7,7 @@
   "use strict";
 
   // 👉 Paste your deployed Cloudflare Worker URL here (see chatbot-backend/README.md)
-  const CHATBOT_API_URL = "";
+  const CHATBOT_API_URL = "https://portfolio-chatbot.developwithzohaib.workers.dev";
 
   const GREETING =
     "Hi! 👋 I'm Zohaib's AI assistant. Ask me about his experience, the kinds of projects he builds, or how to work with him.";
