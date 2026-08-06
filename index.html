@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script>document.documentElement.classList.add('js');</script>
   <title>Zohaib Khan | AI Engineer &amp; Data Scientist</title>
   <meta name="description" content="Zohaib Khan is an AI engineer who builds practical AI tools for businesses: chatbots, automation, and computer vision that actually work." />
   <meta name="author" content="Zohaib Khan" />
@@ -14,13 +13,16 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Three.js (backup) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="chatbot.css" />
@@ -59,24 +61,25 @@
 
   <!-- ═══════════════════════════════════════════ HERO ═════════ -->
   <section id="hero" class="hero-section">
-    <div class="hero-backdrop" aria-hidden="true"></div>
+    <canvas id="heroCanvas"></canvas>
+    <div id="hero3d"></div>
 
     <div class="hero-container">
-      <div class="hero-content">
-        <p class="hero-eyebrow reveal">
+      <div class="hero-content reveal">
+        <p class="hero-eyebrow">
           <span class="badge-dot"></span>
           <span>Available for new projects</span>
         </p>
 
-        <h1 class="hero-name reveal">Zohaib <span class="gradient-text">Khan</span></h1>
+        <h1 class="hero-name">Zohaib <span class="gradient-text">Khan</span></h1>
 
-        <p class="hero-subtitle reveal">AI Engineer, building tools that help real businesses work smarter</p>
+        <p class="hero-subtitle">AI Engineer, building tools that help real businesses work smarter</p>
 
-        <p class="hero-description reveal">
+        <p class="hero-description">
           I build AI products that solve real business problems, turning your ideas into fully working automated solutions.
         </p>
 
-        <div class="hero-actions reveal">
+        <div class="hero-actions">
           <a href="#projects" class="btn btn-primary magnetic-btn" id="btn-projects">
             <i data-lucide="layout-grid"></i> View Projects
           </a>
@@ -270,174 +273,305 @@
   <section id="projects" class="projects-section">
     <div class="section-container">
       <div class="section-header reveal">
-        <span class="section-tag">Selected Work</span>
+        <span class="section-tag">My Work</span>
         <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
-        <p class="section-desc">A curated set of AI systems built for real use cases, from voice agents to computer vision. The full index follows below.</p>
+        <p class="section-desc">A selection of AI tools and automation systems I have built for real use cases.</p>
       </div>
 
-      <div class="cases">
-        <aside class="cases-rail" aria-hidden="true">
-          <div class="cases-rail-inner">
-            <div class="cases-index"><b id="caseCurrent">01</b> <span>/ 06</span></div>
-            <div class="cases-cat" id="caseCat">Voice AI &middot; Automation</div>
-            <div class="cases-progress"><span id="caseFill"></span></div>
+      <div class="hp-bar reveal">
+        <span class="hp-counter"><b id="hpCurrent">01</b> / <span id="hpTotal">14</span></span>
+        <span class="hp-progress"><span class="fill" id="hpFill"></span></span>
+        <span class="hp-hint">Scroll to slide through &rarr;</span>
+      </div>
+    </div>
+
+    <div class="hp-viewport">
+      <div class="hp-track" id="hpTrack">
+
+        <div class="hp-cat"><i data-lucide="brain"></i><span>Chatbots &amp; Smart Assistants</span></div>
+
+        <!-- Animal Faith voice AI audit -->
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="phone-call"></i></div>
+            <h4 class="card-title">Animal Shelter Voice AI Audit</h4>
           </div>
-        </aside>
-
-        <div class="cases-list">
-          <article class="case" data-cat="Voice AI &middot; Automation">
-            <div class="case-meta">
-              <span class="case-num">01</span>
-              <span class="case-cat">Voice AI &middot; Automation</span>
-              <span class="case-flag"><i data-lucide="lock"></i> Client project</span>
-            </div>
-            <h3 class="case-title">WhatsApp Roofing Inspection Bot</h3>
-            <p class="case-desc">Built and debugged a WhatsApp assistant that qualifies leads, checks real inspector availability, and books the appointment directly, tested end to end before going live.</p>
-            <div class="case-tags"><span>WhatsApp AI</span><span>Automation</span><span>Booking</span></div>
-          </article>
-
-          <article class="case" data-cat="Voice AI">
-            <div class="case-meta">
-              <span class="case-num">02</span>
-              <span class="case-cat">Voice AI</span>
-              <span class="case-flag"><i data-lucide="lock"></i> Client project</span>
-            </div>
-            <h3 class="case-title">Outbound AI Sales Caller Audit</h3>
-            <p class="case-desc">Audited an AI voice sales system, fixed a broken demo-booking flow, and planned a safe path to scale it to 1,000 more calls without blowing the automation budget.</p>
-            <div class="case-tags"><span>Voice AI</span><span>n8n</span><span>CRM</span></div>
-          </article>
-
-          <article class="case" data-cat="Computer Vision">
-            <div class="case-meta">
-              <span class="case-num">03</span>
-              <span class="case-cat">Computer Vision</span>
-            </div>
-            <h3 class="case-title">YOLOv10 License Plate Reader</h3>
-            <p class="case-desc">A camera system that automatically reads and logs vehicle license plates in real time, straight into a SQL database.</p>
-            <div class="case-tags"><span>YOLOv10</span><span>Computer Vision</span><span>SQL</span></div>
-            <div class="case-links">
-              <a href="https://github.com/Zohaib-commits/yolov10-license-plate-sql-database" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> View on GitHub</a>
-            </div>
-          </article>
-
-          <article class="case" data-cat="RAG &middot; LLM">
-            <div class="case-meta">
-              <span class="case-num">04</span>
-              <span class="case-cat">RAG &middot; LLM</span>
-            </div>
-            <h3 class="case-title">Business RAG Chatbot</h3>
-            <p class="case-desc">A chatbot that actually knows your business, trained on your own documents so it gives accurate, relevant answers.</p>
-            <div class="case-tags"><span>Pinecone</span><span>LangChain</span><span>FastAPI</span></div>
-            <div class="case-links">
-              <a href="https://github.com/Zohaib-commits/Rag_chatbot_implementation" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> View on GitHub</a>
-            </div>
-          </article>
-
-          <article class="case" data-cat="Automation">
-            <div class="case-meta">
-              <span class="case-num">05</span>
-              <span class="case-cat">Automation</span>
-            </div>
-            <h3 class="case-title">Automated Invoice Processing</h3>
-            <p class="case-desc">Removes manual data entry for accounting. Invoices go in, organized records come out in Google Sheets automatically.</p>
-            <div class="case-tags"><span>Python</span><span>Data Automation</span><span>APIs</span></div>
-            <div class="case-links">
-              <a href="https://github.com/Zohaib-commits/automated_invoice_processing" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> View on GitHub</a>
-            </div>
-          </article>
-
-          <article class="case" data-cat="Voice AI">
-            <div class="case-meta">
-              <span class="case-num">06</span>
-              <span class="case-cat">Voice AI</span>
-              <span class="case-flag"><i data-lucide="lock"></i> Client project</span>
-            </div>
-            <h3 class="case-title">Animal Shelter Voice AI Audit</h3>
-            <p class="case-desc">Audited a Dutch animal shelter's AI phone assistant, traced why urgent calls and booking texts were silently failing, and fixed it live with zero downtime.</p>
-            <div class="case-tags"><span>Voice AI</span><span>Automation</span><span>n8n</span></div>
-          </article>
+          <p class="card-desc">Audited a Dutch animal shelter's AI phone assistant, traced why urgent calls and booking texts were silently failing, and fixed it live with zero downtime.</p>
+          <div class="card-tags">
+            <span class="tag">Voice AI</span>
+            <span class="tag">Automation</span>
+            <span class="tag">n8n</span>
+          </div>
+          <div class="card-footer">
+            <span class="no-link-label"><i data-lucide="lock"></i> Client Project</span>
+          </div>
         </div>
-      </div>
 
-      <!-- Full index of remaining work -->
-      <div class="catalog reveal">
-        <div class="catalog-head">
-          <span class="section-tag">More Work</span>
+        <!-- DakCentrale WhatsApp booking bot -->
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="calendar-check"></i></div>
+            <h4 class="card-title">WhatsApp Roofing Inspection Bot</h4>
+          </div>
+          <p class="card-desc">Built and debugged a WhatsApp assistant that qualifies leads, checks real inspector availability, and books the appointment directly, tested end to end before going live.</p>
+          <div class="card-tags">
+            <span class="tag">WhatsApp AI</span>
+            <span class="tag">Automation</span>
+            <span class="tag">Booking</span>
+          </div>
+          <div class="card-footer">
+            <span class="no-link-label"><i data-lucide="lock"></i> Client Project</span>
+          </div>
         </div>
-        <ul class="catalog-list">
-          <li class="catalog-item">
-            <a href="https://github.com/Zohaib-commits/gemini-text-to-sql" target="_blank" rel="noopener">
-              <span class="cat-num">07</span>
-              <span class="cat-name">Gemini Text-to-SQL</span>
-              <span class="cat-cat">RAG / LLM</span>
-              <span class="cat-tech">Gemini &middot; SQL</span>
-              <span class="cat-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+
+        <!-- Ora FacePass outbound sales voice agent -->
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="phone-outgoing"></i></div>
+            <h4 class="card-title">Outbound AI Sales Caller Audit</h4>
+          </div>
+          <p class="card-desc">Audited an AI voice sales system, fixed a broken demo-booking flow, and planned a safe path to scale it to 1,000 more calls without blowing the automation budget.</p>
+          <div class="card-tags">
+            <span class="tag">Voice AI</span>
+            <span class="tag">n8n</span>
+            <span class="tag">CRM</span>
+          </div>
+          <div class="card-footer">
+            <span class="no-link-label"><i data-lucide="lock"></i> Client Project</span>
+          </div>
+        </div>
+
+        <!-- Gemini Text-to-SQL -->
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="database"></i></div>
+            <h4 class="card-title">Gemini Text-to-SQL</h4>
+          </div>
+          <p class="card-desc">Ask a database a plain English question and get the right answer back, no query language required.</p>
+          <div class="card-tags">
+            <span class="tag">Gemini</span>
+            <span class="tag">SQL</span>
+            <span class="tag">LLM</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/gemini-text-to-sql" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
             </a>
-          </li>
-          <li class="catalog-item">
-            <a href="https://github.com/Zohaib-commits/Vectorless_Rag" target="_blank" rel="noopener">
-              <span class="cat-num">08</span>
-              <span class="cat-name">Vectorless RAG</span>
-              <span class="cat-cat">RAG</span>
-              <span class="cat-tech">LLM &middot; RAG</span>
-              <span class="cat-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+          </div>
+        </div>
+
+        <!-- Vectorless RAG -->
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="zap"></i></div>
+            <h4 class="card-title">Vectorless RAG</h4>
+          </div>
+          <p class="card-desc">A faster, lighter way to build AI chatbots that search your documents for answers, without the usual heavy database setup.</p>
+          <div class="card-tags">
+            <span class="tag">LLM</span>
+            <span class="tag">RAG</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/Vectorless_Rag" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
             </a>
-          </li>
-          <li class="catalog-item">
-            <a href="https://github.com/Zohaib-commits/Scrapper_llm" target="_blank" rel="noopener">
-              <span class="cat-num">09</span>
-              <span class="cat-name">Scrapper &amp; Invoice Extractor</span>
-              <span class="cat-cat">Automation</span>
-              <span class="cat-tech">Python &middot; Scraping</span>
-              <span class="cat-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+          </div>
+        </div>
+
+        <!-- RAG Chatbot -->
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="bot"></i></div>
+            <h4 class="card-title">RAG Chatbot Implementation</h4>
+          </div>
+          <p class="card-desc">A chatbot that actually knows your business, trained on your own documents so it gives accurate, relevant answers.</p>
+          <div class="card-tags">
+            <span class="tag">Pinecone</span>
+            <span class="tag">LangChain</span>
+            <span class="tag">FastAPI</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/Rag_chatbot_implementation" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
             </a>
-          </li>
-          <li class="catalog-item">
-            <a href="https://github.com/Zohaib-commits/Corrective_RAG" target="_blank" rel="noopener">
-              <span class="cat-num">10</span>
-              <span class="cat-name">Corrective RAG Insights</span>
-              <span class="cat-cat">Research</span>
-              <span class="cat-tech">Jupyter &middot; Prompting</span>
-              <span class="cat-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+          </div>
+        </div>
+
+        <!-- Scrapper & Invoice Extractor -->
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="file-search"></i></div>
+            <h4 class="card-title">Scrapper &amp; Invoice Extractor LLM</h4>
+          </div>
+          <p class="card-desc">Automatically pulls the numbers you need out of messy invoices and websites, no manual copy and pasting.</p>
+          <div class="card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Scraping</span>
+            <span class="tag">LLM</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/Scrapper_llm" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
             </a>
-          </li>
-          <li class="catalog-item">
-            <a href="https://github.com/Zohaib-commits/Blood_spectroscopy" target="_blank" rel="noopener">
-              <span class="cat-num">11</span>
-              <span class="cat-name">Blood Spectroscopy Analysis</span>
-              <span class="cat-cat">Data Science</span>
-              <span class="cat-tech">ML &middot; Data</span>
-              <span class="cat-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+          </div>
+        </div>
+
+        <!-- Corrective RAG -->
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="refresh-cw"></i></div>
+            <h4 class="card-title">Corrective RAG Insights</h4>
+          </div>
+          <p class="card-desc">Research into making AI chatbots double-check themselves, so they give more accurate answers.</p>
+          <div class="card-tags">
+            <span class="tag">Jupyter</span>
+            <span class="tag">Prompt Engineering</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/Corrective_RAG" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
             </a>
-          </li>
-          <li class="catalog-item">
-            <a href="https://github.com/Zohaib-commits/AI_voice_agent_vapi" target="_blank" rel="noopener">
-              <span class="cat-num">12</span>
-              <span class="cat-name">Local AI Voice Agent</span>
-              <span class="cat-cat">Voice AI</span>
-              <span class="cat-tech">Python &middot; Voice</span>
-              <span class="cat-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+          </div>
+        </div>
+
+        <div class="hp-cat"><i data-lucide="eye"></i><span>Computer Vision</span></div>
+
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="scan"></i></div>
+            <h4 class="card-title">YOLOv10 License Plate Reader</h4>
+          </div>
+          <p class="card-desc">A camera system that automatically reads and logs vehicle license plates in real time.</p>
+          <div class="card-tags">
+            <span class="tag">YOLOv10</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">SQL</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/yolov10-license-plate-sql-database" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
             </a>
-          </li>
-          <li class="catalog-item">
-            <a href="https://github.com/Zohaib-commits/N8n-personal_assistant_workflow" target="_blank" rel="noopener">
-              <span class="cat-num">13</span>
-              <span class="cat-name">Personal Assistant Workflow</span>
-              <span class="cat-cat">Automation</span>
-              <span class="cat-tech">n8n &middot; Agents</span>
-              <span class="cat-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+          </div>
+        </div>
+
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="activity"></i></div>
+            <h4 class="card-title">Blood Spectroscopy Analysis</h4>
+          </div>
+          <p class="card-desc">Used machine learning on lab data to help spot health indicators that are hard to catch by eye.</p>
+          <div class="card-tags">
+            <span class="tag">Data Science</span>
+            <span class="tag">Machine Learning</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/Blood_spectroscopy" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
             </a>
-          </li>
-          <li class="catalog-item">
-            <a href="https://github.com/Zohaib-commits/Fast_api" target="_blank" rel="noopener">
-              <span class="cat-num">14</span>
-              <span class="cat-name">FastAPI Services Framework</span>
-              <span class="cat-cat">Backend</span>
-              <span class="cat-tech">FastAPI &middot; APIs</span>
-              <span class="cat-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+          </div>
+        </div>
+
+        <div class="hp-cat"><i data-lucide="cog"></i><span>Automation &amp; Voice</span></div>
+
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="file-text"></i></div>
+            <h4 class="card-title">Automated Invoice Processing</h4>
+          </div>
+          <p class="card-desc">Removes manual data entry for accounting. Invoices go in, organized records come out in Google Sheets automatically.</p>
+          <div class="card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Data Automation</span>
+            <span class="tag">APIs</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/automated_invoice_processing" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
             </a>
-          </li>
-        </ul>
+          </div>
+        </div>
+
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="mic"></i></div>
+            <h4 class="card-title">Local AI Voice Agent</h4>
+          </div>
+          <p class="card-desc">A voice assistant you can actually talk to. It listens, responds, and gets tasks done.</p>
+          <div class="card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Voice AI</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/AI_voice_agent_vapi" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="workflow"></i></div>
+            <h4 class="card-title">Personal Assistant Workflow</h4>
+          </div>
+          <p class="card-desc">A background assistant that handles scheduled tasks and sends the right notifications automatically.</p>
+          <div class="card-tags">
+            <span class="tag">n8n</span>
+            <span class="tag">Agents</span>
+            <span class="tag">Automation</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/N8n-personal_assistant_workflow" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card" data-tilt>
+          <div class="card-shimmer"></div>
+          <div class="card-glare"></div>
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="server"></i></div>
+            <h4 class="card-title">FastAPI Services Framework</h4>
+          </div>
+          <p class="card-desc">The solid backend foundation that safely runs AI models and manages user logins behind the scenes.</p>
+          <div class="card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">APIs</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Zohaib-commits/Fast_api" target="_blank" rel="noopener" class="card-link">
+              <i class="fa-brands fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -454,7 +588,7 @@
       <div class="carousel-wrapper reveal">
         <div class="carousel-track" id="carouselTrack">
 
-          <div class="testimonial-card glass-card reveal">
+          <div class="testimonial-card glass-card">
             <div class="testimonial-quote"><i data-lucide="quote"></i></div>
             <p class="testimonial-text">"We needed a shopping assistant that could answer size, return, and stock questions for 10,000+ SKUs. Zohaib delivered a Pinecone-powered chatbot that handles it all instantly, and our support tickets dropped by 60% in the first month."</p>
             <div class="testimonial-author">
@@ -473,7 +607,7 @@
             </div>
           </div>
 
-          <div class="testimonial-card glass-card reveal">
+          <div class="testimonial-card glass-card">
             <div class="testimonial-quote"><i data-lucide="quote"></i></div>
             <p class="testimonial-text">"New hires used to flood our HR desk with the same policy questions every week. Zohaib built us a private, locally-hosted onboarding assistant using Ollama and FastAPI. Now employees get instant answers, and our HR team focuses on actual work."</p>
             <div class="testimonial-author">
@@ -492,7 +626,7 @@
             </div>
           </div>
 
-          <div class="testimonial-card glass-card reveal">
+          <div class="testimonial-card glass-card">
             <div class="testimonial-quote"><i data-lucide="quote"></i></div>
             <p class="testimonial-text">"We needed real-time CCTV monitoring to detect workers without hard hats or safety vests on our sites. Zohaib's YOLO-based vision system flags violations instantly and logs every incident. It has already prevented two serious accidents."</p>
             <div class="testimonial-author">
@@ -511,7 +645,7 @@
             </div>
           </div>
 
-          <div class="testimonial-card glass-card reveal">
+          <div class="testimonial-card glass-card">
             <div class="testimonial-quote"><i data-lucide="quote"></i></div>
             <p class="testimonial-text">"Zohaib automated our entire lead pipeline, from form submission to personalised AI-written follow-up emails, CRM updates, and WhatsApp alerts. What used to take our agents hours now runs on its own. Truly a game-changer for our agency."</p>
             <div class="testimonial-author">
@@ -530,7 +664,7 @@
             </div>
           </div>
 
-          <div class="testimonial-card glass-card reveal">
+          <div class="testimonial-card glass-card">
             <div class="testimonial-quote"><i data-lucide="quote"></i></div>
             <p class="testimonial-text">"Screening 500+ resumes per role was killing our team's time. Zohaib built an AI screener using LangChain and Pinecone that ranks candidates by job fit in seconds. Our time-to-shortlist dropped from 3 days to under 20 minutes."</p>
             <div class="testimonial-author">
@@ -549,7 +683,7 @@
             </div>
           </div>
 
-          <div class="testimonial-card glass-card reveal">
+          <div class="testimonial-card glass-card">
             <div class="testimonial-quote"><i data-lucide="quote"></i></div>
             <p class="testimonial-text">"We were losing orders because staff couldn't always answer the phone during rush hours. Zohaib's voice agent now handles phone orders 24/7, confirms items, quotes wait times, and logs everything automatically. Our missed-order rate is basically zero now."</p>
             <div class="testimonial-author">
@@ -687,11 +821,10 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="script.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="script.js"></script>
-  <script src="motion.js"></script>
+  <script src="projects-scroll.js"></script>
   <script src="chatbot.js"></script>
 </body>
 </html>
