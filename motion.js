@@ -80,6 +80,37 @@
     });
   }
 
+  // ── PROJECTS — sticky rail tracks the active case study ────
+  const casesWrap = $(".cases");
+  const cases = $$(".case");
+  if (casesWrap && cases.length) {
+    casesWrap.classList.add("dimmed");
+    const curEl = $("#caseCurrent");
+    const catEl = $("#caseCat");
+    const fillEl = $("#caseFill");
+    const total = cases.length;
+    cases.forEach((c, i) => {
+      ScrollTrigger.create({
+        trigger: c,
+        start: "top 58%",
+        end: "bottom 42%",
+        onToggle: (self) => {
+          if (!self.isActive) return;
+          cases.forEach((x) => x.classList.remove("is-active"));
+          c.classList.add("is-active");
+          if (curEl) curEl.textContent = String(i + 1).padStart(2, "0");
+          if (catEl) catEl.innerHTML = c.dataset.cat || "";
+          if (fillEl) fillEl.style.width = (((i + 1) / total) * 100).toFixed(1) + "%";
+        },
+      });
+    });
+    // Default the first case to active so nothing reads as all-dimmed
+    cases[0].classList.add("is-active");
+    if (curEl) curEl.textContent = "01";
+    if (catEl) catEl.innerHTML = cases[0].dataset.cat || "";
+    if (fillEl) fillEl.style.width = ((1 / total) * 100).toFixed(1) + "%";
+  }
+
   // ── TESTIMONIALS — sequential editorial reveal ─────────────
   const quotes = $$(".testimonial-card");
   if (quotes.length) {
