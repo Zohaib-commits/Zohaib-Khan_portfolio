@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>document.documentElement.classList.add('js');</script>
   <title>Zohaib Khan | AI Engineer &amp; Data Scientist</title>
   <meta name="description" content="Zohaib Khan is an AI engineer who builds practical AI tools for businesses: chatbots, automation, and computer vision that actually work." />
   <meta name="author" content="Zohaib Khan" />
@@ -13,16 +14,13 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-
-  <!-- Three.js (backup) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="chatbot.css" />
@@ -61,25 +59,24 @@
 
   <!-- ═══════════════════════════════════════════ HERO ═════════ -->
   <section id="hero" class="hero-section">
-    <canvas id="heroCanvas"></canvas>
-    <div id="hero3d"></div>
+    <div class="hero-backdrop" aria-hidden="true"></div>
 
     <div class="hero-container">
-      <div class="hero-content reveal">
-        <p class="hero-eyebrow">
+      <div class="hero-content">
+        <p class="hero-eyebrow reveal">
           <span class="badge-dot"></span>
           <span>Available for new projects</span>
         </p>
 
-        <h1 class="hero-name">Zohaib <span class="gradient-text">Khan</span></h1>
+        <h1 class="hero-name reveal">Zohaib <span class="gradient-text">Khan</span></h1>
 
-        <p class="hero-subtitle">AI Engineer, building tools that help real businesses work smarter</p>
+        <p class="hero-subtitle reveal">AI Engineer, building tools that help real businesses work smarter</p>
 
-        <p class="hero-description">
+        <p class="hero-description reveal">
           I build AI products that solve real business problems, turning your ideas into fully working automated solutions.
         </p>
 
-        <div class="hero-actions">
+        <div class="hero-actions reveal">
           <a href="#projects" class="btn btn-primary magnetic-btn" id="btn-projects">
             <i data-lucide="layout-grid"></i> View Projects
           </a>
@@ -821,9 +818,11 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+  <script src="motion.js"></script>
   <script src="projects-scroll.js"></script>
   <script src="chatbot.js"></script>
 </body>
