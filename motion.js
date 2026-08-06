@@ -111,19 +111,8 @@
     if (fillEl) fillEl.style.width = ((1 / total) * 100).toFixed(1) + "%";
   }
 
-  // ── TESTIMONIALS — sequential editorial reveal ─────────────
-  const quotes = $$(".testimonial-card");
-  if (quotes.length) {
-    quotes.forEach((q) => {
-      gsap.set(q, { opacity: 0, y: 34 });
-      ScrollTrigger.create({
-        trigger: q,
-        start: "top 82%",
-        once: true,
-        onEnter: () => gsap.to(q, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }),
-      });
-    });
-  }
+  // Testimonials use the hardened .reveal system (see script.js) so they
+  // can never get stuck hidden if a trigger fails to fire.
 
   // ── Recalculate after fonts / layout settle ────────────────
   window.addEventListener("load", () => ScrollTrigger.refresh());
