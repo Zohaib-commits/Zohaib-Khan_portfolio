@@ -84,6 +84,12 @@
   // Mobile: native swipe
   mm.add("(max-width: 820px)", () => enableSwipe());
 
-  window.addEventListener("load", () => ScrollTrigger.refresh());
-  setTimeout(() => ScrollTrigger.refresh(), 600);
+  // Recalculate pin positions after everything that shifts layout settles.
+  // Web fonts loading late is the usual cause of stale pin offsets, which
+  // makes the pinned section engage at the wrong scroll position.
+  const refresh = () => ScrollTrigger.refresh();
+  window.addEventListener("load", refresh);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
+  setTimeout(refresh, 600);
+  setTimeout(refresh, 1600);
 })();

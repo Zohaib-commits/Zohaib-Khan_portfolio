@@ -863,7 +863,10 @@ select:focus-visible,
 .projects-section {
   padding: 44px 0 100px;
   position: relative;
-  z-index: 2;
+  z-index: 3;
+  /* Opaque so the pinned section never lets adjacent sections
+     bleed through while it is fixed during the horizontal scroll */
+  background: var(--bg-primary);
 }
 /* Compact header + shorter, viewport-aware cards so the pinned
    horizontal gallery fits with clear space beneath the cards */
