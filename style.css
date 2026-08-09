@@ -1677,3 +1677,30 @@ select:focus-visible,
   .skills-grid.sk-ready .skill-tile::before { transform: scaleY(1); transition: none; }
   .skills-grid.sk-ready .skill-tile > * { opacity: 1; transform: none; transition: none; }
 }
+
+/* ══════════════════════════════════════════════════════════
+   PROJECTS grid — cohesive blue accent line + hover lift
+   Cards fade/rise in via the existing .reveal system; the left
+   accent bar (#6062F2) draws in when the card reveals, and hover
+   draws/thickens it. Same language as the Skills section.
+   ══════════════════════════════════════════════════════════ */
+.projects-grid .project-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: #6062F2;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), width 0.3s ease;
+  pointer-events: none;
+}
+.projects-grid .project-card.visible::after { transform: scaleY(1); }
+.projects-grid .project-card:hover::after { transform: scaleY(1); width: 3px; }
+.projects-grid .project-card:hover { transform: translateY(-4px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-grid .project-card::after { transform: scaleY(1); transition: none; }
+}
