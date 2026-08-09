@@ -1637,3 +1637,44 @@ select:focus-visible,
   .hp-track { padding: 6px 20px 12px; }
   .hp-cat span { font-size: 1.1rem; }
 }
+
+/* ══════════════════════════════════════════════════════════
+   SKILLS — left accent bar draws in + content fades up on scroll
+   Single accent (#6062F2), restrained, one motion in the section.
+   ══════════════════════════════════════════════════════════ */
+.skills-grid .skill-tile { position: relative; }
+
+/* The 2px accent bar on the left edge, full card height */
+.skills-grid .skill-tile::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: #6062F2;
+}
+
+/* Hidden initial state is applied only once JS marks the grid ready,
+   so if the script never runs the content stays fully visible. */
+.skills-grid.sk-ready .skill-tile::before {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.skills-grid.sk-ready .skill-tile > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Played state (added per card by the IntersectionObserver) */
+.skills-grid.sk-ready .skill-tile.sk-in::before { transform: scaleY(1); }
+.skills-grid.sk-ready .skill-tile.sk-in > * { opacity: 1; transform: none; }
+
+/* Reduced motion: bars fully drawn, content visible, no transitions */
+@media (prefers-reduced-motion: reduce) {
+  .skills-grid.sk-ready .skill-tile::before { transform: scaleY(1); transition: none; }
+  .skills-grid.sk-ready .skill-tile > * { opacity: 1; transform: none; transition: none; }
+}
