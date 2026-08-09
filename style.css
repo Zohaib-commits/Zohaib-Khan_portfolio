@@ -861,7 +861,11 @@ select:focus-visible,
    PROJECTS SECTION
    ══════════════════════════════════════════════════════════ */
 .projects-section {
-  padding: 44px 0 100px;
+  padding: 40px 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
   z-index: 3;
   /* Opaque so the pinned section never lets adjacent sections
