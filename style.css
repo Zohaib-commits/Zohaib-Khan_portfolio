@@ -861,10 +861,13 @@ select:focus-visible,
    PROJECTS SECTION
    ══════════════════════════════════════════════════════════ */
 .projects-section {
-  padding: 120px 0;
+  padding: 44px 0 100px;
   position: relative;
   z-index: 2;
 }
+/* Compact header + shorter, viewport-aware cards so the pinned
+   horizontal gallery fits with clear space beneath the cards */
+.projects-section .section-header { margin-bottom: 20px; }
 
 .project-category-title {
   font-family: var(--font-heading);
@@ -1581,7 +1584,7 @@ select:focus-visible,
 }
 .hp-hint { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.04em; }
 
-.hp-viewport { overflow: hidden; margin-top: 44px; }
+.hp-viewport { overflow: hidden; margin-top: 20px; }
 .hp-track {
   display: flex;
   align-items: stretch;
@@ -1591,11 +1594,13 @@ select:focus-visible,
   will-change: transform;
 }
 
-/* Cards get a fixed width so they sit in a row */
+/* Cards get a fixed width so they sit in a row.
+   Height scales with the viewport so the pinned gallery always fits. */
 .hp-track .project-card {
   flex: 0 0 clamp(280px, 82vw, 380px);
   width: clamp(280px, 82vw, 380px);
-  min-height: 430px;
+  min-height: clamp(280px, 42vh, 380px);
+  padding: 22px 24px;
 }
 
 /* Vertical category dividers between card groups */
