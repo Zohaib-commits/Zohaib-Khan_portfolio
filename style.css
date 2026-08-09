@@ -861,20 +861,15 @@ select:focus-visible,
    PROJECTS SECTION
    ══════════════════════════════════════════════════════════ */
 .projects-section {
-  padding: 40px 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 80px 0;
   position: relative;
   z-index: 3;
   /* Opaque so the pinned section never lets adjacent sections
      bleed through while it is fixed during the horizontal scroll */
   background: var(--bg-primary);
 }
-/* Compact header + shorter, viewport-aware cards so the pinned
-   horizontal gallery fits with clear space beneath the cards */
-.projects-section .section-header { margin-bottom: 20px; }
+/* Compact header so the pinned gallery fits with clear space beneath */
+.projects-section .section-header { margin-bottom: 28px; }
 
 .project-category-title {
   font-family: var(--font-heading);
@@ -1660,7 +1655,7 @@ select:focus-visible,
 .skills-grid.sk-ready .skill-tile::before {
   transform: scaleY(0);
   transform-origin: top;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), width 0.3s ease;
 }
 .skills-grid.sk-ready .skill-tile > * {
   opacity: 0;
@@ -1672,6 +1667,10 @@ select:focus-visible,
 /* Played state (added per card by the IntersectionObserver) */
 .skills-grid.sk-ready .skill-tile.sk-in::before { transform: scaleY(1); }
 .skills-grid.sk-ready .skill-tile.sk-in > * { opacity: 1; transform: none; }
+
+/* Hover: the blue line draws in (if not already) and thickens slightly.
+   Works whether or not the card has been revealed on scroll. */
+.skills-grid.sk-ready .skill-tile:hover::before { transform: scaleY(1); width: 3px; }
 
 /* Reduced motion: bars fully drawn, content visible, no transitions */
 @media (prefers-reduced-motion: reduce) {
