@@ -1664,17 +1664,14 @@ select:focus-visible,
               transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Played state (added per card by the IntersectionObserver) */
-.skills-grid.sk-ready .skill-tile.sk-in::before { transform: scaleY(1); }
+/* Content still fades up on scroll; the blue line appears ONLY on hover. */
 .skills-grid.sk-ready .skill-tile.sk-in > * { opacity: 1; transform: none; }
 
-/* Hover: the blue line draws in (if not already) and thickens slightly.
-   Works whether or not the card has been revealed on scroll. */
-.skills-grid.sk-ready .skill-tile:hover::before { transform: scaleY(1); width: 3px; }
+/* Hover: the blue vertical line draws in. No line otherwise. */
+.skills-grid.sk-ready .skill-tile:hover::before { transform: scaleY(1); }
 
-/* Reduced motion: bars fully drawn, content visible, no transitions */
+/* Reduced motion: content visible, no transitions. Line stays hover-only. */
 @media (prefers-reduced-motion: reduce) {
-  .skills-grid.sk-ready .skill-tile::before { transform: scaleY(1); transition: none; }
   .skills-grid.sk-ready .skill-tile > * { opacity: 1; transform: none; transition: none; }
 }
 
@@ -1684,23 +1681,5 @@ select:focus-visible,
    accent bar (#6062F2) draws in when the card reveals, and hover
    draws/thickens it. Same language as the Skills section.
    ══════════════════════════════════════════════════════════ */
-.projects-grid .project-card::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 2px;
-  height: 100%;
-  background: #6062F2;
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), width 0.3s ease;
-  pointer-events: none;
-}
-.projects-grid .project-card.visible::after { transform: scaleY(1); }
-.projects-grid .project-card:hover::after { transform: scaleY(1); width: 3px; }
+/* Subtle hover lift on project cards (no accent line here) */
 .projects-grid .project-card:hover { transform: translateY(-4px); }
-
-@media (prefers-reduced-motion: reduce) {
-  .projects-grid .project-card::after { transform: scaleY(1); transition: none; }
-}
