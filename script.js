@@ -489,17 +489,31 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(step);
   }
 
+  const statsSection = document.getElementById('stats');
+
+  function runCountersIfNeeded() {
+    if (!statsSection) return;
+    statNumbers.forEach(animateCounter);
+    statsObserver.disconnect();
+  }
+
   const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        statNumbers.forEach(animateCounter);
-        statsObserver.disconnect();
+        runCountersIfNeeded();
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.2 });
 
-  const statsSection = document.getElementById('stats');
-  if (statsSection) statsObserver.observe(statsSection);
+  if (statsSection) {
+    // If already in viewport on load, fire immediately
+    const rect = statsSection.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      runCountersIfNeeded();
+    } else {
+      statsObserver.observe(statsSection);
+    }
+  }
 
   // ══════════════════════════════════════════════════════════
   // 7. 3D CARD TILT
