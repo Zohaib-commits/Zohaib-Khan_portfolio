@@ -464,42 +464,76 @@ document.addEventListener('DOMContentLoaded', () => {
   if (processTimeline) {
     processTimeline.classList.add('process-ready');
 
+    const desktopProcessLine = processTimeline.querySelector('.process-line-desktop');
     const mobileProcessLine = processTimeline.querySelector('.process-line-mobile');
-    const mobileProcessPaths = mobileProcessLine ? mobileProcessLine.querySelectorAll('path') : [];
     const processMarkers = processTimeline.querySelectorAll('.process-marker');
 
-    function alignMobileProcessLine() {
-      if (!mobileProcessLine || window.innerWidth > 900 || processMarkers.length < 2) return;
-
-      const lineRect = mobileProcessLine.getBoundingClientRect();
-      if (!lineRect.height) return;
-
-      const points = Array.from(processMarkers, marker => {
-        const markerRect = marker.getBoundingClientRect();
-        return markerRect.top + markerRect.height / 2 - lineRect.top;
-      });
-
-      let pathData = `M 26 ${points[0].toFixed(2)}`;
-      for (let i = 1; i < points.length; i += 1) {
-        const startY = points[i - 1];
-        const endY = points[i];
-        const bendX = i % 2 ? 34 : 18;
-        const controlOffset = (endY - startY) * 0.34;
-        pathData += ` C ${bendX} ${(startY + controlOffset).toFixed(2)}, ${bendX} ${(endY - controlOffset).toFixed(2)}, 26 ${endY.toFixed(2)}`;
-      }
-
-      mobileProcessLine.setAttribute('viewBox', `0 0 52 ${lineRect.height.toFixed(2)}`);
-      mobileProcessPaths.forEach(path => path.setAttribute('d', pathData));
+    function setProcessPath(line, pathData, viewBox) {
+      if (!line) return;
+      line.setAttribute('viewBox', viewBox);
+      line.querySelectorAll('path').forEach(path => path.setAttribute('d', pathData));
     }
 
-    requestAnimationFrame(alignMobileProcessLine);
-    window.addEventListener('load', alignMobileProcessLine, { once: true });
+    function alignProcessLines() {
+      if (processMarkers.length < 2) return;
+
+      const markerRects = Array.from(processMarkers, marker => marker.getBoundingClientRect());
+
+      if (window.innerWidth > 900 && desktopProcessLine) {
+        const lineRect = desktopProcessLine.getBoundingClientRect();
+        if (!lineRect.width) return;
+
+        let desktopPath = '';
+        for (let i = 0; i < markerRects.length - 1; i += 1) {
+          const current = markerRects[i];
+          const next = markerRects[i + 1];
+          const startX = current.right - lineRect.left;
+          const endX = next.left - lineRect.left;
+          const centerY = current.top + current.height / 2 - lineRect.top;
+          const distance = endX - startX;
+          const midpoint = (startX + endX) / 2;
+          const curveY = centerY + (i % 2 ? -10 : 10);
+
+          desktopPath += ` M ${startX.toFixed(2)} ${centerY.toFixed(2)}`;
+          desktopPath += ` C ${(startX + distance * 0.2).toFixed(2)} ${centerY.toFixed(2)}, ${(midpoint - distance * 0.1).toFixed(2)} ${curveY.toFixed(2)}, ${midpoint.toFixed(2)} ${curveY.toFixed(2)}`;
+          desktopPath += ` C ${(midpoint + distance * 0.1).toFixed(2)} ${curveY.toFixed(2)}, ${(endX - distance * 0.2).toFixed(2)} ${centerY.toFixed(2)}, ${endX.toFixed(2)} ${centerY.toFixed(2)}`;
+        }
+
+        setProcessPath(desktopProcessLine, desktopPath.trim(), `0 0 ${lineRect.width.toFixed(2)} 64`);
+        return;
+      }
+
+      if (mobileProcessLine) {
+        const lineRect = mobileProcessLine.getBoundingClientRect();
+        if (!lineRect.height) return;
+
+        let mobilePath = '';
+        for (let i = 0; i < markerRects.length - 1; i += 1) {
+          const current = markerRects[i];
+          const next = markerRects[i + 1];
+          const startY = current.bottom - lineRect.top;
+          const endY = next.top - lineRect.top;
+          const distance = endY - startY;
+          const midpoint = (startY + endY) / 2;
+          const bendX = i % 2 ? 18 : 34;
+
+          mobilePath += ` M 26 ${startY.toFixed(2)}`;
+          mobilePath += ` C 26 ${(startY + distance * 0.2).toFixed(2)}, ${bendX} ${(midpoint - distance * 0.1).toFixed(2)}, ${bendX} ${midpoint.toFixed(2)}`;
+          mobilePath += ` C ${bendX} ${(midpoint + distance * 0.1).toFixed(2)}, 26 ${(endY - distance * 0.2).toFixed(2)}, 26 ${endY.toFixed(2)}`;
+        }
+
+        setProcessPath(mobileProcessLine, mobilePath.trim(), `0 0 52 ${lineRect.height.toFixed(2)}`);
+      }
+    }
+
+    requestAnimationFrame(alignProcessLines);
+    window.addEventListener('load', alignProcessLines, { once: true });
 
     if ('ResizeObserver' in window) {
-      const processResizeObserver = new ResizeObserver(alignMobileProcessLine);
+      const processResizeObserver = new ResizeObserver(alignProcessLines);
       processResizeObserver.observe(processTimeline);
     } else {
-      window.addEventListener('resize', alignMobileProcessLine, { passive: true });
+      window.addEventListener('resize', alignProcessLines, { passive: true });
     }
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
