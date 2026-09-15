@@ -2050,6 +2050,7 @@ select:focus-visible,
   width: 21px;
   height: 21px;
   stroke-width: 1.7;
+  transition: transform var(--transition);
 }
 
 .process-step-content {
@@ -2062,10 +2063,14 @@ select:focus-visible,
 }
 
 .process-step:hover .process-marker {
-  transform: translateY(-3px);
+  transform: none;
   border-color: var(--accent-soft);
   background: rgba(120,166,216,0.1);
   color: var(--text-primary);
+}
+
+.process-step:hover .process-marker svg {
+  transform: scale(1.08);
 }
 
 .process-step:hover .process-step-content {
