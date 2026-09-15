@@ -10,7 +10,7 @@
   const CHATBOT_API_URL = "https://portfolio-chatbot.developwithzohaib.workers.dev";
 
   const GREETING =
-    "Hi! 👋 I'm Zohaib's AI assistant. Ask me about his experience, the kinds of projects he builds, or how to work with him.";
+    "Hi, I can answer questions about Zohaib's work, projects, and availability.";
 
   const SUGGESTIONS = [
     "What kind of projects does Zohaib do?",
@@ -38,15 +38,15 @@
       <div class="chatbot-header">
         <div class="chatbot-avatar">${ICONS.bot}</div>
         <div class="chatbot-header-text">
-          <strong>Ask about Zohaib</strong>
-          <span>AI assistant · online</span>
+          <strong>Project assistant</strong>
+          <span>Ask about Zohaib's work</span>
         </div>
         <button class="chatbot-close" aria-label="Close chat">${ICONS.close}</button>
       </div>
       <div class="chatbot-messages" id="chatbotMessages"></div>
       <div class="chatbot-suggestions" id="chatbotSuggestions"></div>
       <div class="chatbot-input-row">
-        <textarea class="chatbot-input" id="chatbotInput" rows="1" placeholder="Ask me anything about Zohaib..." aria-label="Message"></textarea>
+        <textarea class="chatbot-input" id="chatbotInput" rows="1" placeholder="Ask about projects, services, or availability..." aria-label="Message"></textarea>
         <button class="chatbot-send" id="chatbotSend" aria-label="Send message">${ICONS.send}</button>
       </div>
     </div>
@@ -147,6 +147,16 @@
     return el;
   }
 
+  function cleanReply(text) {
+    return String(text || "")
+      .replace(/[—–]/g, ",")
+      .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, "")
+      .replace(/\s+,/g, ",")
+      .replace(/,{2,}/g, ",")
+      .replace(/\s{2,}/g, " ")
+      .trim();
+  }
+
   // ── Sending ────────────────────────────────────────────────
   async function send() {
     const text = inputEl.value.trim();
@@ -183,8 +193,9 @@
       if (!res.ok || data.error) {
         addMessage(data.error || "Something went wrong. Please try again.", "error");
       } else {
-        addMessage(data.reply, "bot");
-        history.push({ role: "assistant", content: data.reply });
+        const reply = cleanReply(data.reply);
+        addMessage(reply, "bot");
+        history.push({ role: "assistant", content: reply });
       }
     } catch {
       typing.remove();

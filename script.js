@@ -458,6 +458,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealEls.forEach(el => revealObserver.observe(el));
 
+  // Process timeline: draw the connector and reveal each stage on entry.
+  const processTimeline = document.querySelector('[data-process-timeline]');
+
+  if (processTimeline) {
+    processTimeline.classList.add('process-ready');
+
+    const mobileProcessLine = processTimeline.querySelector('.process-line-mobile');
+    const mobileProcessPaths = mobileProcessLine ? mobileProcessLine.querySelectorAll('path') : [];
+    const processMarkers = processTimeline.querySelectorAll('.process-marker');
+
+    function alignMobileProcessLine() {
+      if (!mobileProcessLine || window.innerWidth > 900 || processMarkers.length < 2) return;
+
+      const lineRect = mobileProcessLine.getBoundingClientRect();
+      if (!lineRect.height) return;
+
+      const points = Array.from(processMarkers, marker => {
+        const markerRect = marker.getBoundingClientRect();
+        return markerRect.top + markerRect.height / 2 - lineRect.top;
+      });
+
+      let pathData = `M 26 ${points[0].toFixed(2)}`;
+      for (let i = 1; i < points.length; i += 1) {
+        const startY = points[i - 1];
+        const endY = points[i];
+        const bendX = i % 2 ? 34 : 18;
+        const controlOffset = (endY - startY) * 0.34;
+        pathData += ` C ${bendX} ${(startY + controlOffset).toFixed(2)}, ${bendX} ${(endY - controlOffset).toFixed(2)}, 26 ${endY.toFixed(2)}`;
+      }
+
+      mobileProcessLine.setAttribute('viewBox', `0 0 52 ${lineRect.height.toFixed(2)}`);
+      mobileProcessPaths.forEach(path => path.setAttribute('d', pathData));
+    }
+
+    requestAnimationFrame(alignMobileProcessLine);
+    window.addEventListener('load', alignMobileProcessLine, { once: true });
+
+    if ('ResizeObserver' in window) {
+      const processResizeObserver = new ResizeObserver(alignMobileProcessLine);
+      processResizeObserver.observe(processTimeline);
+    } else {
+      window.addEventListener('resize', alignMobileProcessLine, { passive: true });
+    }
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      processTimeline.classList.add('is-active');
+    } else {
+      const processObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-active');
+          processObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.28, rootMargin: '0px 0px -50px 0px' });
+
+      processObserver.observe(processTimeline);
+    }
+  }
+
   // ══════════════════════════════════════════════════════════
   // 6. STATS COUNTER ANIMATION
   // ══════════════════════════════════════════════════════════
@@ -577,8 +636,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroImageWrap = document.querySelector('.hero-image');
 
   if (imageFrame && heroImageWrap) {
+    const portraitImg = imageFrame.querySelector('img');
+    const canTrackPortrait = !prefersReducedMotion &&
+      window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     let targetRotX = 0, targetRotY = 0;
     let currentRotX = 0, currentRotY = 0;
+    let targetFaceX = 0, targetFaceY = 0;
+    let currentFaceX = 0, currentFaceY = 0;
 
     heroImageWrap.addEventListener('mousemove', (e) => {
       const rect = heroImageWrap.getBoundingClientRect();
@@ -593,10 +657,30 @@ document.addEventListener('DOMContentLoaded', () => {
       targetRotY = 0;
     });
 
+    if (canTrackPortrait && heroSectionEl) {
+      heroSectionEl.addEventListener('pointermove', (e) => {
+        const rect = heroSectionEl.getBoundingClientRect();
+        const normalizedX = Math.max(-1, Math.min(1, ((e.clientX - rect.left) / rect.width - 0.5) * 2));
+        const normalizedY = Math.max(-1, Math.min(1, ((e.clientY - rect.top) / rect.height - 0.5) * 2));
+        targetFaceX = normalizedX * 8;
+        targetFaceY = normalizedY * 6;
+      }, { passive: true });
+
+      heroSectionEl.addEventListener('pointerleave', () => {
+        targetFaceX = 0;
+        targetFaceY = 0;
+      });
+    }
+
     (function animateFrameTilt() {
       currentRotX += (targetRotX - currentRotX) * 0.08;
       currentRotY += (targetRotY - currentRotY) * 0.08;
+      currentFaceX += (targetFaceX - currentFaceX) * 0.075;
+      currentFaceY += (targetFaceY - currentFaceY) * 0.075;
       imageFrame.style.transform = `rotateX(${currentRotX}deg) rotateY(${currentRotY}deg)`;
+      if (portraitImg && canTrackPortrait) {
+        portraitImg.style.transform = `translate3d(${currentFaceX}px, ${currentFaceY}px, 70px) scale(1.035)`;
+      }
       requestAnimationFrame(animateFrameTilt);
     })();
   }

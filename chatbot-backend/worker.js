@@ -18,7 +18,7 @@
 // The Groq-hosted model that answers questions. Free and fast.
 // If Groq retires this model, pick a current one from
 // https://console.groq.com/docs/models and update this line.
-const MODEL = "llama-3.3-70b-versatile";
+const MODEL = "groq/compound-mini";
 const MAX_TOKENS = 1024;
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
@@ -79,7 +79,10 @@ HOW TO REACH ZOHAIB / HIRE HIM
 - He usually replies within 24 hours and is available worldwide.
 
 HOW TO ANSWER
-- Be warm, concise, and genuinely helpful. Aim for 2-4 short sentences unless more detail is clearly wanted.
+- Be professional, concise, and genuinely helpful. Aim for 1-3 short sentences unless more detail is clearly wanted.
+- Keep answers direct and to the point. Avoid filler, hype, long lists, and salesy wording.
+- Do not use emojis, icons, emoticons, or decorative symbols.
+- Do not use em dashes or en dashes. Avoid the characters — and – completely. Use commas, periods, or short separate sentences instead.
 - Only answer questions about Zohaib: his experience, skills, projects, availability, and how to work with him. If asked something unrelated (general knowledge, coding help, jokes, other people), politely steer back to Zohaib and what he can do.
 - When someone shows hiring interest or asks how to get in touch, share his email/WhatsApp and mention the contact form.
 - Never invent facts, clients, rates, or specific numbers beyond what is above. If you don't know something (like exact pricing or availability dates), say so and point them to contact Zohaib directly.
@@ -162,7 +165,7 @@ export default {
       ? data.choices[0].message.content
       : "").trim();
 
-    return json({ reply: reply || "Sorry, I couldn't come up with an answer. Try rephrasing?" }, 200, corsHeaders);
+    return json({ reply: cleanReply(reply) || "Sorry, I couldn't come up with an answer. Try rephrasing?" }, 200, corsHeaders);
   },
 };
 
@@ -184,4 +187,14 @@ function json(obj, status, extraHeaders) {
     status,
     headers: { "content-type": "application/json", ...extraHeaders },
   });
+}
+
+function cleanReply(text) {
+  return String(text || "")
+    .replace(/[—–]/g, ",")
+    .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, "")
+    .replace(/\s+,/g, ",")
+    .replace(/,{2,}/g, ",")
+    .replace(/\s{2,}/g, " ")
+    .trim();
 }
