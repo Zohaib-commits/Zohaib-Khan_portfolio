@@ -492,11 +492,11 @@ document.addEventListener('DOMContentLoaded', () => {
           const centerY = current.top + current.height / 2 - lineRect.top;
           const distance = endX - startX;
           const midpoint = (startX + endX) / 2;
-          const curveY = centerY + (i % 2 ? -10 : 10);
+          const curveY = centerY + (i % 2 ? -7 : 7);
 
           desktopPath += ` M ${startX.toFixed(2)} ${centerY.toFixed(2)}`;
-          desktopPath += ` C ${(startX + distance * 0.2).toFixed(2)} ${centerY.toFixed(2)}, ${(midpoint - distance * 0.1).toFixed(2)} ${curveY.toFixed(2)}, ${midpoint.toFixed(2)} ${curveY.toFixed(2)}`;
-          desktopPath += ` C ${(midpoint + distance * 0.1).toFixed(2)} ${curveY.toFixed(2)}, ${(endX - distance * 0.2).toFixed(2)} ${centerY.toFixed(2)}, ${endX.toFixed(2)} ${centerY.toFixed(2)}`;
+          desktopPath += ` C ${(startX + distance * 0.22).toFixed(2)} ${centerY.toFixed(2)}, ${(midpoint - distance * 0.22).toFixed(2)} ${curveY.toFixed(2)}, ${midpoint.toFixed(2)} ${curveY.toFixed(2)}`;
+          desktopPath += ` C ${(midpoint + distance * 0.22).toFixed(2)} ${curveY.toFixed(2)}, ${(endX - distance * 0.22).toFixed(2)} ${centerY.toFixed(2)}, ${endX.toFixed(2)} ${centerY.toFixed(2)}`;
         }
 
         setProcessPath(desktopProcessLine, desktopPath.trim(), `0 0 ${lineRect.width.toFixed(2)} 64`);
@@ -515,11 +515,11 @@ document.addEventListener('DOMContentLoaded', () => {
           const endY = next.top - lineRect.top;
           const distance = endY - startY;
           const midpoint = (startY + endY) / 2;
-          const bendX = i % 2 ? 18 : 34;
+          const bendX = i % 2 ? 20 : 32;
 
           mobilePath += ` M 26 ${startY.toFixed(2)}`;
-          mobilePath += ` C 26 ${(startY + distance * 0.2).toFixed(2)}, ${bendX} ${(midpoint - distance * 0.1).toFixed(2)}, ${bendX} ${midpoint.toFixed(2)}`;
-          mobilePath += ` C ${bendX} ${(midpoint + distance * 0.1).toFixed(2)}, 26 ${(endY - distance * 0.2).toFixed(2)}, 26 ${endY.toFixed(2)}`;
+          mobilePath += ` C 26 ${(startY + distance * 0.22).toFixed(2)}, ${bendX} ${(midpoint - distance * 0.22).toFixed(2)}, ${bendX} ${midpoint.toFixed(2)}`;
+          mobilePath += ` C ${bendX} ${(midpoint + distance * 0.22).toFixed(2)}, 26 ${(endY - distance * 0.22).toFixed(2)}, 26 ${endY.toFixed(2)}`;
         }
 
         setProcessPath(mobileProcessLine, mobilePath.trim(), `0 0 52 ${lineRect.height.toFixed(2)}`);
