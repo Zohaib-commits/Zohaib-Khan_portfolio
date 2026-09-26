@@ -552,63 +552,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ══════════════════════════════════════════════════════════
-  // 6. STATS COUNTER ANIMATION
-  // ══════════════════════════════════════════════════════════
-  const statNumbers = document.querySelectorAll('.stat-number');
-
-  function easeOutQuart(t) {
-    return 1 - Math.pow(1 - t, 4);
-  }
-
-  function animateCounter(el) {
-    const target = parseInt(el.getAttribute('data-target'), 10);
-    const suffix = el.getAttribute('data-suffix') || '';
-    const duration = 1800;
-    const start = performance.now();
-
-    function step(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = easeOutQuart(progress);
-      const current = Math.round(eased * target);
-      el.textContent = current + suffix;
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
-        el.textContent = target + suffix;
-      }
-    }
-
-    requestAnimationFrame(step);
-  }
-
-  const statsSection = document.getElementById('stats');
-
-  function runCountersIfNeeded() {
-    if (!statsSection) return;
-    statNumbers.forEach(animateCounter);
-    statsObserver.disconnect();
-  }
-
-  const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        runCountersIfNeeded();
-      }
-    });
-  }, { threshold: 0.2 });
-
-  if (statsSection) {
-    // If already in viewport on load, fire immediately
-    const rect = statsSection.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      runCountersIfNeeded();
-    } else {
-      statsObserver.observe(statsSection);
-    }
-  }
-
-  // ══════════════════════════════════════════════════════════
   // 7. 3D CARD TILT
   // ══════════════════════════════════════════════════════════
   const tiltCards = document.querySelectorAll('[data-tilt]');
