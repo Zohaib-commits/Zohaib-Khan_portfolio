@@ -264,6 +264,10 @@
   box-shadow: none;
 }
 
+.chatbot-toggle .chatbot-icon-open {
+  color: var(--accent);
+}
+
 .chatbot-toggle:hover {
   transform: none;
   box-shadow: none;
