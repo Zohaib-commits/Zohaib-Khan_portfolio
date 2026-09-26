@@ -18,7 +18,7 @@
 // The Groq-hosted model that answers questions. Free and fast.
 // If Groq retires this model, pick a current one from
 // https://console.groq.com/docs/models and update this line.
-const MODEL = "groq/compound-mini";
+const MODEL = "openai/gpt-oss-20b";
 const MAX_TOKENS = 1024;
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 

@@ -36,7 +36,7 @@ Groq has a generous free tier that is more than enough for a portfolio chatbot, 
 
 ## Changing the model
 
-The default model is `groq/compound-mini` (fast and available on the current Groq free/API model list). If Groq retires it or you want a different one, open `worker.js`, change the `MODEL` line to any current model from console.groq.com/docs/models, and redeploy.
+The default model is `openai/gpt-oss-20b` (fast and available on the current Groq API model list). If Groq retires it or you want a different one, open `worker.js`, change the `MODEL` line to any current model from console.groq.com/docs/models, and redeploy.
 
 ## Locking it down (optional)
 
