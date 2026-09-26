@@ -2444,27 +2444,26 @@ select:focus-visible,
 
 /* Trust-first redesign overrides */
 :root {
-  --bg-primary: #0f1113;
-  --bg-secondary: #151719;
-  --surface: rgba(255,255,255,0.035);
-  --surface-hover: rgba(255,255,255,0.055);
-  --border: rgba(255,255,255,0.10);
+  --bg-primary: #111210;
+  --bg-secondary: #171815;
+  --surface: rgba(244,239,229,0.038);
+  --surface-hover: rgba(244,239,229,0.058);
+  --border: rgba(229,222,210,0.11);
   --border-hover: rgba(126,156,190,0.34);
   --accent: #78a6d8;
   --accent-soft: #a9c4df;
   --accent-dim: rgba(120,166,216,0.10);
   --good: #8bbf9f;
   --good-dim: rgba(139,191,159,0.10);
-  --text-primary: #f4f1eb;
-  --text-secondary: #b7b0a6;
-  --text-muted: #8e887f;
+  --text-primary: #f2eee6;
+  --text-secondary: #b9b2a7;
+  --text-muted: #918b82;
   --radius-md: 10px;
   --radius-lg: 14px;
   --radius-xl: 18px;
   --shadow-glow-accent: none;
 }
 
-body::before,
 #heroCanvas,
 #hero3d,
 .image-glow,
@@ -2478,6 +2477,19 @@ body::before,
   display: none !important;
 }
 
+body {
+  background-color: var(--bg-primary);
+  background-image: linear-gradient(180deg, #151512 0%, #111210 30%, #121310 67%, #0f100f 100%);
+  background-attachment: fixed;
+}
+
+body::before {
+  display: block;
+  opacity: 0.014;
+  background-size: 280px 280px;
+  mix-blend-mode: soft-light;
+}
+
 .gradient-text {
   color: var(--text-primary);
   background: none;
@@ -2485,14 +2497,14 @@ body::before,
 }
 
 #navbar {
-  background: rgba(15,17,19,0.94);
+  background: rgba(17,18,16,0.94);
   box-shadow: none;
 }
 
 .hero-section {
   min-height: auto;
   padding: 132px 0 88px;
-  background: linear-gradient(180deg, rgba(120,166,216,0.045), transparent 58%);
+  background: linear-gradient(180deg, rgba(232,221,199,0.035), rgba(17,18,16,0) 68%);
 }
 
 .hero-container {
@@ -2643,6 +2655,34 @@ body::before,
 .footer-divider {
   background: var(--border);
   box-shadow: none;
+}
+
+.about-section {
+  background: linear-gradient(180deg, rgba(244,239,229,0.012), rgba(244,239,229,0.022), rgba(244,239,229,0.012));
+}
+
+.process-section {
+  background: rgba(244,239,229,0.014);
+  border-top: 1px solid rgba(229,222,210,0.055);
+  border-bottom: 1px solid rgba(229,222,210,0.055);
+}
+
+.projects-section {
+  background: #10110f;
+  border-top: 1px solid rgba(229,222,210,0.055);
+  border-bottom: 1px solid rgba(229,222,210,0.055);
+}
+
+.reviews-section {
+  background: linear-gradient(180deg, #121310 0%, #151511 52%, #121310 100%);
+}
+
+.contact-section {
+  background: linear-gradient(180deg, rgba(17,18,16,0), #0f100f 82%);
+}
+
+.footer {
+  background: #0f100f;
 }
 
 @media (max-width: 768px) {
