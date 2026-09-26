@@ -24,7 +24,7 @@
   <!-- Three.js (backup) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-  <link rel="stylesheet" href="style.css?v=20260926-editorial" />
+  <link rel="stylesheet" href="style.css?v=20260926-project-visuals" />
   <link rel="stylesheet" href="chatbot.css?v=20260926-blue-icon" />
 </head>
 <body>
@@ -488,20 +488,37 @@
           <div class="featured-card-eyebrow">
             <span class="featured-type-tag">Voice AI &nbsp;·&nbsp; Client Project</span>
           </div>
+          <div class="project-proof proof-voice" role="img" aria-label="System snapshot showing an urgent caller routed through a voice AI assistant to a confirmed booking">
+            <div class="proof-topline">
+              <span>Live system map</span>
+              <span class="proof-state"><i></i> Recovered</span>
+            </div>
+            <div class="proof-route" aria-hidden="true">
+              <div class="proof-node is-active">
+                <i data-lucide="phone-incoming"></i>
+                <span>Urgent caller</span>
+              </div>
+              <span class="proof-connector"></span>
+              <div class="proof-node">
+                <i data-lucide="audio-lines"></i>
+                <span>Voice AI</span>
+              </div>
+              <span class="proof-connector"></span>
+              <div class="proof-node">
+                <i data-lucide="calendar-check-2"></i>
+                <span>Booking</span>
+              </div>
+            </div>
+            <div class="proof-results" aria-hidden="true">
+              <span><i data-lucide="circle-check"></i> Priority routing fixed</span>
+              <span><i data-lucide="circle-check"></i> SMS restored</span>
+            </div>
+          </div>
           <div class="card-header">
             <div class="card-icon"><i data-lucide="phone-call"></i></div>
             <h4 class="card-title">Animal Shelter Voice AI Audit</h4>
           </div>
           <p class="card-desc">Audited a Dutch animal shelter's AI phone assistant, traced why urgent calls and booking texts were silently failing, and fixed it live with zero downtime.</p>
-          <div class="project-flow">
-            <span>Caller</span>
-            <i data-lucide="arrow-right"></i>
-            <span>Voice AI</span>
-            <i data-lucide="arrow-right"></i>
-            <span>n8n</span>
-            <i data-lucide="arrow-right"></i>
-            <span>SMS Booking</span>
-          </div>
           <div class="card-tags">
             <span class="tag">Voice AI</span>
             <span class="tag">Automation</span>
@@ -520,22 +537,31 @@
           <div class="featured-card-eyebrow">
             <span class="featured-type-tag">WhatsApp Automation &nbsp;·&nbsp; Client Project</span>
           </div>
+          <div class="project-proof proof-whatsapp" role="img" aria-label="Conversation snapshot showing a roofing lead qualified in WhatsApp and an inspection slot confirmed">
+            <div class="proof-topline">
+              <span>Conversation workflow</span>
+              <span class="proof-state"><i></i> Appointment set</span>
+            </div>
+            <div class="proof-chat" aria-hidden="true">
+              <div class="proof-message proof-message--in">
+                <small>Customer</small>
+                <span>Roof inspection</span>
+              </div>
+              <div class="proof-message proof-message--out">
+                <small>AI assistant</small>
+                <span>Slot available</span>
+              </div>
+            </div>
+            <div class="proof-booking" aria-hidden="true">
+              <div class="proof-date"><i data-lucide="calendar-days"></i><span><small>Inspection</small>Slot confirmed</span></div>
+              <span class="proof-check"><i data-lucide="check"></i></span>
+            </div>
+          </div>
           <div class="card-header">
             <div class="card-icon"><i data-lucide="calendar-check"></i></div>
             <h4 class="card-title">WhatsApp Roofing Inspection Bot</h4>
           </div>
           <p class="card-desc">Built and debugged a WhatsApp assistant that qualifies leads, checks inspector availability, and books appointments after end-to-end testing.</p>
-          <div class="project-flow">
-            <span>Customer</span>
-            <i data-lucide="arrow-right"></i>
-            <span>WhatsApp</span>
-            <i data-lucide="arrow-right"></i>
-            <span>AI</span>
-            <i data-lucide="arrow-right"></i>
-            <span>n8n</span>
-            <i data-lucide="arrow-right"></i>
-            <span>Booking</span>
-          </div>
           <div class="card-tags">
             <span class="tag">WhatsApp AI</span>
             <span class="tag">Automation</span>
@@ -554,20 +580,34 @@
           <div class="featured-card-eyebrow">
             <span class="featured-type-tag">Voice AI &nbsp;·&nbsp; Client Project</span>
           </div>
+          <div class="project-proof proof-outbound" role="img" aria-label="Outbound sales workflow snapshot showing a lead connected by voice AI, synced to CRM, and booked for a demo">
+            <div class="proof-topline">
+              <span>Outbound sequence</span>
+              <span class="proof-state"><i></i> Connected</span>
+            </div>
+            <div class="proof-call-strip" aria-hidden="true">
+              <span class="proof-call-icon"><i data-lucide="phone-outgoing"></i></span>
+              <div>
+                <small>AI sales call</small>
+                <div class="proof-waveform">
+                  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                </div>
+              </div>
+              <span class="proof-duration">Live</span>
+            </div>
+            <div class="proof-pipeline" aria-hidden="true">
+              <span><i data-lucide="user-round"></i> Lead</span>
+              <i data-lucide="chevron-right"></i>
+              <span><i data-lucide="database"></i> CRM synced</span>
+              <i data-lucide="chevron-right"></i>
+              <span class="is-complete"><i data-lucide="calendar-check-2"></i> Demo booked</span>
+            </div>
+          </div>
           <div class="card-header">
             <div class="card-icon"><i data-lucide="phone-outgoing"></i></div>
             <h4 class="card-title">Outbound AI Sales Caller Audit</h4>
           </div>
           <p class="card-desc">Audited an AI voice sales system, fixed a broken demo-booking flow, and planned a safe path to scale it to 1,000 more calls without blowing the automation budget.</p>
-          <div class="project-flow">
-            <span>Lead List</span>
-            <i data-lucide="arrow-right"></i>
-            <span>Voice AI</span>
-            <i data-lucide="arrow-right"></i>
-            <span>CRM</span>
-            <i data-lucide="arrow-right"></i>
-            <span>Demo Booked</span>
-          </div>
           <div class="card-tags">
             <span class="tag">Voice AI</span>
             <span class="tag">n8n</span>
